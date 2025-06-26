@@ -6,7 +6,7 @@ Projeto dedicado para o auxílio nos estudos, mostrando como utilizar métodos d
 link para a documentação:
 
 
-https://github.com/renandias3158/FeynParet-Study
+https://docs.google.com/document/d/1uz6VNaEPVryw1XurX-6ZBVzRYmoKsLo5v6u72QsvxGI/edit?tab=t.0#heading=h.627xi0wyh7ma
 
 Link para o Prototipo:
 
