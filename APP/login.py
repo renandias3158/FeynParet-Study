@@ -1,3 +1,6 @@
+
+###### Pequeno adendo, isso ainda é o esqueleto e ficará bem mais polido
+
 from tkinter import *
 
 janela = Tk()
