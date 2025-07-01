@@ -2,21 +2,48 @@ import sqlite3
 condb = sqlite3.connect("banco.db")
 cursor = condb.cursor()
 
-
-def create_tbl(condb):
+def delete_tbl(condb):
+    cursor.execute('''
+    drop table if exists usuario;
+''')
+def create_login(condb):
     cursor.execute('''
     create table if not exists usuario(
     id integer primary key autoincrement,
     nome text,
     email text,
-    idade integer
+    senha text
     );
     ''')
 
-def insert_data(condb, nome, email, idade):
+
+
+def create_agenda(condb):
+     cursor.execute('''
+    create table if not exists caixa(
+    id integer primary key autoincrement,
+    um text,
+    dois text,
+    tres text,
+    quatro text,
+    cinco text,
+    seis text,
+    sete text,
+    oito text,
+    nove text,
+    dez text,
+    onze text,
+    doze text
+    )
+    ''')
+
+
+
+
+def insert_data(condb, nome, email, senha):
     cursor.execute('''
-    insert into usuario(nome, email, idade) values(?, ?, ?);
-    ''', (nome, email, idade))
+    insert into usuario(nome, email, senha) values(?, ?, ?);
+    ''', (nome, email, senha))
 
 def verify_data(condb):
     cursor.execute('''
@@ -41,9 +68,10 @@ def update_data(condb, id, nome, email, idade):
 
 
 
-create_tbl(condb)
-
-verify_data(condb,)
+create_login(condb)
+insert_data(condb, "renan", "renan@example.com", "senha123")
+create_agenda(condb)
+verify_data(condb)
 for row in verify_data(condb):
     print(row)
 condb.commit()
