@@ -22,43 +22,62 @@ def create_agenda(condb):
      cursor.execute('''
     create table if not exists caixa(
     id integer primary key autoincrement,
-    um text,
-    dois text,
-    tres text,
-    quatro text,
-    cinco text,
-    seis text,
-    sete text,
-    oito text,
-    nove text,
-    dez text,
-    onze text,
-    doze text
+    um text null,
+    dois text null,
+    tres text null,
+    quatro text null,
+    cinco text null,
+    seis text null,
+    sete text null,
+    oito text null,
+    nove text null,
+    dez text null,
+    onze text null,
+    doze text null
     )
     ''')
 
 
 
 
-def insert_data(condb, nome, email, senha):
+
+
+def insert_usuario(condb, nome, email, senha):
     cursor.execute('''
     insert into usuario(nome, email, senha) values(?, ?, ?);
     ''', (nome, email, senha))
 
-def verify_data(condb):
+
+def insert_caixa(condb,um = "", dois = "", tres = "", quatro = "", cinco = "", seis = "", sete = "", oito = "", nove = "", dez = "", onze = "", doze = ""):
+    cursor.execute('''
+    insert into caixa(um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez, onze, doze) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);
+    ''', (um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez, onze, doze))
+
+
+def verify_usuario(condb):
     cursor.execute('''
     select * from usuario;
     ''')
-
     return cursor.fetchall()
-def delete_data(condb, id):
+
+
+def verify_caixa(condb):
+    cursor.execute('''
+    select * from caixa;
+    ''')
+    return cursor.fetchall()
+
+
+def delete_usuario(condb, id):
     global ids
     ids = int(input("Digite o ID do usuário que deseja excluir: "))
     cursor.execute('''
     delete from usuario where id = ?;
     ''', (id,))
 
-def update_data(condb, id, nome, email, idade):
+
+
+def update_usuario(condb, id, nome, email, idade):
     cursor.execute('''
     update usuario set nome = ?, email = ?, idade = ? where id = ?;
     ''', (nome, email, idade, id))
@@ -69,9 +88,9 @@ def update_data(condb, id, nome, email, idade):
 
 
 create_login(condb)
-insert_data(condb, "renan", "renan@example.com", "senha123")
 create_agenda(condb)
-verify_data(condb)
-for row in verify_data(condb):
+for row in verify_caixa(condb):
+    print(row)
+for row in verify_usuario(condb):
     print(row)
 condb.commit()
