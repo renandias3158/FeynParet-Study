@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="MainCSS.css">
+</head>
+<style>
+
+    body, h1,p,button{  
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.form{
+    width: 300px;
+    height: 400px;
+    margin-top: 7cm;
+    padding: 1cm;
+    padding-bottom: 1cm;
+    background-color: rgb(226, 226, 226);
+    border-radius: 20px;
+}
+div.form>input{
+    margin-bottom: 40px;
+    padding: 0.2cm;
+    border-radius: 10px;
+    border: none;
+    transition-duration: 0.5s;
+    width: 280px;
+    height: 20px;
+    
+}
+div.form>input:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    box-shadow: 0px 8px 5px rgb(136, 136, 136);
+}
+div.form>button{
+    margin-bottom: 30px;
+    width: 20%;
+    height: 30px;
+    margin-top: 15px;
+    padding: 0.2cm;
+    border-radius: 10px;
+    border: none;
+    transition-duration: 0.5s;
+    
+}
+div.form>button:hover{
+    transition-duration: 0.5s;
+    background-color: greenyellow;
+    transform: scale(110%);
+    
+}
+.newacc{
+    grid-area:a;
+    width: 240px;
+    height: 25px;
+    background-color: white;
+    border: none;
+    transition-duration: 0.5s;
+    margin-top: 6.5cm;
+    
+}
+.newacc:hover{
+    transition-duration: 0.5s;
+    color: yellowgreen;
+}
+</style>
+<body>
+        <header></header>
+
+        <div method="POST" class="form">
+        <p for="nome">Insira o e-mail</p>
+        <input type="text" id="nome" name="nome">
+        <p for="senha">Insira a senha</p>
+        <input type="text" id="senha" name="senha">
+        <br>
+        <button type="submit">Enviar</button>
+        </div>
+
+
+        <button type="submit" onclick="newaccpage()"  class="newacc">Clique aqui para criar uma nova conta</button>
+        <script>
+            function newaccpage(){
+                window.open("/newaccount", "_blank")
+            }
+
+        </script>
+</body>
+</html>
