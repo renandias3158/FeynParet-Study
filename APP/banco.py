@@ -1,19 +1,27 @@
 import sqlite3
 condb = sqlite3.connect("banco.db")
 cursor = condb.cursor()
-
+PRAGMA foreign_keys = ON;
 def delete_tbl(condb):
     cursor.execute('''
     drop table if exists usuario;
 ''')
+def create_metodo(condb):
+    cursor.execute('''
+    create table if not exists metodo(
+    id integer primary key autoincrement,
+    escolha integer not null)
+    ''')
 def create_login(condb):
     cursor.execute('''
     create table if not exists usuario(
     id integer primary key autoincrement,
-    nome text,
-    email text,
-    senha text
-    );
+    nome text not null,
+    email text not null,
+    senha text not null,
+    escolha integer not null
+    foreign key(escolha) references metodo(id) on delete cascade on update cascade
+    )
     ''')
 
 
@@ -54,11 +62,24 @@ def insert_caixa(condb,um = "", dois = "", tres = "", quatro = "", cinco = "", s
     ''', (um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez, onze, doze))
 
 
+def insert_metodo(condb, metodo):
+    cursor.execute('''
+    insert into metodo(metodo) values(?);
+    ''', (metodo,))
+
 def verify_usuario(condb):
     cursor.execute('''
     select * from usuario;
     ''')
     return cursor.fetchall()
+
+
+def verify_metodo(condb):
+    cursor.execute('''
+    select * from metodo;
+    ''')
+    return cursor.fetchall()
+
 
 
 def verify_caixa(condb):
@@ -89,8 +110,14 @@ def update_usuario(condb, id, nome, email, idade):
 
 create_login(condb)
 create_agenda(condb)
+create_metodo(condb)
+insert_usuario(condb, "renan", "renan@example", "senha123")
+insert_caixa(condb, "estudar geografia", "estudar matematica", "estudar portugues", "estudar ingles", "estudar historia", "estudar quimica", "estudar fisica", "estudar biologia", "estudar filosofia", "estudar sociologia", "estudar artes", "estudar educacao fisica")
+insert_metodo(condb, 1)
 for row in verify_caixa(condb):
     print(row)
 for row in verify_usuario(condb):
+    print(row)
+for row in verify_metodo(condb):
     print(row)
 condb.commit()
