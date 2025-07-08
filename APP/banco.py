@@ -1,16 +1,27 @@
 import sqlite3
 condb = sqlite3.connect("banco.db")
 cursor = condb.cursor()
-PRAGMA foreign_keys = ON;
 def delete_tbl(condb):
     cursor.execute('''
     drop table if exists usuario;
 ''')
+def create_fonte():
+    cursor.execute('''
+    create table if not exists(
+    id integer primary key autoincrement,
+    
+                   )
+
+    ''')
+
+
+
 def create_metodo(condb):
     cursor.execute('''
     create table if not exists metodo(
     id integer primary key autoincrement,
-    escolha integer not null)
+    escolha integer not null,
+    favorito boolean null)
     ''')
 def create_login(condb):
     cursor.execute('''
@@ -18,10 +29,7 @@ def create_login(condb):
     id integer primary key autoincrement,
     nome text not null,
     email text not null,
-    senha text not null,
-    escolha integer not null
-    foreign key(escolha) references metodo(id) on delete cascade on update cascade
-    )
+    senha text not null
     ''')
 
 
