@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeynParet Study</title>
+</head>
+<style>
+
+body{
+    display: grid;
+    background-color: rgba(0, 207, 0, 0);
+    height: 100vh;
+    grid-template-areas:
+        "h h h h h"
+        "n m m m a"
+        "n m m m a"
+        "n m m m a"
+        "n f f f f"
+}
+
+header{
+    grid-area: h;
+    display: flex;
+    justify-content: space-between;
+
+}
+header>img{
+    height: 20%;
+    
+
+}
+.feyn{
+    color: rgb(0, 207, 0);
+}
+.study{
+    color:red;
+}
+div.botoes>button{
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+div.botoes>button.vermelho:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+div.botoes>button.verde:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(0, 255, 0, 0.712);
+    color: rgba(255, 0, 0, 0.520);
+}
+nav{
+    grid-area: n;
+    display: flex;
+    justify-content: space-between;
+}
+
+main{
+    grid-area: m;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5cm;
+}
+
+aside{
+    grid-area: a;
+    display: flex;
+    justify-content: right;
+    flex-direction: column;
+}
+aside>button{
+    width: 150px;
+    height: 150px;
+    border: none;
+    background-color:rgb(221, 221, 221); ;
+    margin-bottom: 30px;
+}
+aside>button:hover{
+    width: 150px;
+    height: 150px;
+    border: none;
+    background-color:rgb(221, 221, 221); ;
+    margin-bottom: 30px;
+}
+
+footer{
+    grid-area: f;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 255, 0, 0.512);
+}
+
+
+</style>
+<body>
+
+<header>
+<img src="images/Fparet.jpg">
+
+<div>
+<h1 class="feyn">Feynparet </h1><h1 class="study">Study</h1>
+</div>
+
+<div class="botoes">
+<button class="vermelho">Saiba mais</button>
+<button class="verde">Agenda</button>
+</div>
+
+</header>
+
+<nav><p>nav</p>
+
+
+
+</nav>
+
+<main><p>main</p>
+
+
+
+</main>
+
+<aside>
+<button onclick="metodosestudo()">Métodos de estudo</button>
+<button>Ambientes de estudo</button>
+<button>Fontes</button>
+</aside>
+
+<footer>
+
+
+
+</footer>
+<script>
+    function metodosestudo(){
+        window.location.href = "./metodosestudo.html";
+    }
+
+</script>
+</body>
+</html>
