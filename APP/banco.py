@@ -7,13 +7,28 @@ def delete_tbl(condb):
 ''')
 def create_fonte():
     cursor.execute('''
-    create table if not exists(
+    create table if not exists fonte(
     id integer primary key autoincrement,
-    
-                   )
+    favorito boolean null
+    )''')
 
+def create_organização(condb):
+    cursor.execute('''
+    create table if not exists organizaçao(
+        id integer primary key autoincrement,
+        tipo text not null,
+        nome text not null
+    )
     ''')
 
+def create_playlist(args):
+    cursor.execute('''
+    create table if not exists playlist(
+        id integer primary key autoincrement,
+        link_p text not null,
+        favorito boleean null
+        )
+        ''')
 
 
 def create_metodo(condb):
@@ -23,19 +38,20 @@ def create_metodo(condb):
     escolha integer not null,
     favorito boolean null)
     ''')
+
 def create_login(condb):
     cursor.execute('''
     create table if not exists usuario(
     id integer primary key autoincrement,
     nome text not null,
     email text not null,
-    senha text not null
+    senha text not null)
     ''')
 
 
 
 def create_agenda(condb):
-     cursor.execute('''
+    cursor.execute('''
     create table if not exists caixa(
     id integer primary key autoincrement,
     um text null,
@@ -64,7 +80,7 @@ def insert_usuario(condb, nome, email, senha):
     ''', (nome, email, senha))
 
 
-def insert_caixa(condb,um = "", dois = "", tres = "", quatro = "", cinco = "", seis = "", sete = "", oito = "", nove = "", dez = "", onze = "", doze = ""):
+def insert_caixa(condb,um = "Livre", dois = "Livre", tres = "Livre", quatro = "Livre", cinco = "Livre", seis = "Livre", sete = "Livre", oito = "Livre", nove = "Livre", dez = "Livre", onze = "Livre", doze = "Livre"):
     cursor.execute('''
     insert into caixa(um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez, onze, doze) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);
     ''', (um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez, onze, doze))
@@ -72,7 +88,7 @@ def insert_caixa(condb,um = "", dois = "", tres = "", quatro = "", cinco = "", s
 
 def insert_metodo(condb, metodo):
     cursor.execute('''
-    insert into metodo(metodo) values(?);
+    insert into metodo(escolha) values(?,?);
     ''', (metodo,))
 
 def verify_usuario(condb):
@@ -119,9 +135,8 @@ def update_usuario(condb, id, nome, email, idade):
 create_login(condb)
 create_agenda(condb)
 create_metodo(condb)
-insert_usuario(condb, "renan", "renan@example", "senha123")
+insert_usuario(condb, "Davi", "jojo@aaa.ccc", "senha123")
 insert_caixa(condb, "estudar geografia", "estudar matematica", "estudar portugues", "estudar ingles", "estudar historia", "estudar quimica", "estudar fisica", "estudar biologia", "estudar filosofia", "estudar sociologia", "estudar artes", "estudar educacao fisica")
-insert_metodo(condb, 1)
 for row in verify_caixa(condb):
     print(row)
 for row in verify_usuario(condb):
