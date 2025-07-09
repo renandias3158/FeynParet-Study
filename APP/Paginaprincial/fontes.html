@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontes</title>
+</head>
+<style>
+header{
+    grid-area: h;
+    display: flex;
+
+}
+header>img{
+width: 150px;
+height: 150px;
+
+
+}
+header>h1{
+    color: rgb(0, 207, 0);
+    margin-left: 1cm;
+}
+.escolhas>button{  
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+    border: none;
+    background-color:rgb(221, 221, 221); ;
+    margin-bottom: 30px;
+    transition-duration: 0.5s;
+}
+
+.escolhas>button:hover{
+    transform: scale(105%);
+    background-color:rgb(184, 184, 184);
+    transition-duration: 0.5s; 
+}
+    
+button>img{
+    width: 120px;
+    height: 120px;
+    border-radius:10px;
+}
+</style>
+<body>
+    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>FONTES</h1></header>
+    <div class="escolhas">
+    <button onclick="estudo()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGoIIGBIIU3DCaRlbnkQP-WU3DkTE_Qw5Ucg&s">Sites para estudo</button>
+    <button onclick="pesquisa()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUWsnVQAtp6xJhsdYK7ASCAwUytgfTCIvylg&s">Sites para pesquisa</button>
+    <button onclick="canais()"><img src="https://yt3.googleusercontent.com/u6H_TO65Atxmpc98XR-HcMFZ16o1UVppXqO7gj4hMUfz6H6YHjXZh4rLGTkyMHXNmeOfRFa0=s900-c-k-c0x00ffffff-no-rj">Youtube assuntos</button>
+    <button onclick="metodos()"><img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JpfMsav___iv4_u_gF4OyAA7DFANFvHy0w&s">Youtube métodos</button>
+    </div>
+    <button onclick="voltar()">Voltar</button>
+    <script>
+        function estudo(){
+            window.location.href="./estudo.html"
+        }
+        function pesquisa(){
+            window.location.href="./pesquisa.html"
+        }
+        function canais(){
+            window.location.href="./canais.html"
+        }
+        function metodos(){
+            window.location.href="./metodos.html"
+        }
+        function voltar(){
+            window.location.href="./mainPage.html"
+        }
+    </script>
+</body>
+</html>

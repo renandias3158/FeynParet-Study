@@ -16,7 +16,7 @@ body{
         "n m m m a"
         "n m m m a"
         "n m m m a"
-        "n f f f f"
+        "f f f f f"
 }
 
 header{
@@ -26,7 +26,8 @@ header{
 
 }
 header>img{
-    height: 20%;
+width: 150px;
+height: 150px;
     
 
 }
@@ -67,9 +68,25 @@ main{
     grid-area: m;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     margin-right: 5cm;
 }
-
+main>h2{
+    font-size: 200%;
+}
+main>button{
+    height: 40px;
+    width: 120px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+main>button:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+}
 aside{
     grid-area: a;
     display: flex;
@@ -77,25 +94,30 @@ aside{
     flex-direction: column;
 }
 aside>button{
+    border-radius: 20px;
     width: 150px;
     height: 150px;
     border: none;
     background-color:rgb(221, 221, 221); ;
     margin-bottom: 30px;
+    transition-duration: 0.5s;
 }
 aside>button:hover{
-    width: 150px;
-    height: 150px;
-    border: none;
-    background-color:rgb(221, 221, 221); ;
-    margin-bottom: 30px;
+    transform: scale(105%);
+    background-color:rgb(184, 184, 184);
+    transition-duration: 0.5s; 
+    
 }
-
+button>img{
+    width: 120px;
+    height: 120px;
+    border-radius:10px;
+}
 footer{
     grid-area: f;
-    display: flex;
-    justify-content: space-between;
+    padding: 1cm;
     background-color: rgba(0, 255, 0, 0.512);
+    border-color:rgba(0, 255, 0, 0.512);
 }
 
 
@@ -111,27 +133,33 @@ footer{
 
 <div class="botoes">
 <button class="vermelho">Saiba mais</button>
-<button class="verde">Agenda</button>
+<button class="verde">Usuário</button>
 </div>
+
 
 </header>
 
-<nav><p>nav</p>
+<nav>
 
 
 
 </nav>
 
-<main><p>main</p>
+<main><h2 class="alberto">“Lembre-se que as pessoas podem tirar tudo de você, menos o seu conhecimento.”
+<br>
+<em>Albert Einstein</em></h2>
 
+<button onclick="forms()">Formulario</button>
+
+<h2>Oque deseja aprender hoje?</h2>
 
 
 </main>
 
 <aside>
-<button onclick="metodosestudo()">Métodos de estudo</button>
-<button>Ambientes de estudo</button>
-<button>Fontes</button>
+<button onclick="metodosestudo()"><img src="https://s2.glbimg.com/iliegsNCb3sjC7asag5FWd5M1I4=/e.glbimg.com/og/ed/f/original/2020/05/04/thought-catalog-505eectw54k-unsplash.jpg">Métodos de estudo</button>
+<button onclick="organizacao()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLsai6b-xKlWR4C5rLDk62Q2U29_DUofP2Yw&s">Organização</button>
+<button onclick="fontes()"><img src="https://www.idebrasil.com.br/blog/wp-content/uploads/2018/02/Palestra-Empresarial-5-dicas-importantes-para-quem-vai-participar-850x441.jpg">Fontes</button>
 </aside>
 
 <footer>
@@ -143,7 +171,15 @@ footer{
     function metodosestudo(){
         window.location.href = "./metodosestudo.html";
     }
-
+    function organizacao(){
+        window.location.href = "./organizacao.html";
+    }
+    function fontes(){
+        window.location.href = "./fontes.html"
+    }
+    function forms(){
+        window.location.href = "./form.html"
+    }
 </script>
 </body>
 </html>

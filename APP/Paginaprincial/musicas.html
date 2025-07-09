@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Músicas</title>
+</head>
+<style>
+header{
+    grid-area: h;
+    display: flex;
+
+}
+header>img{
+width: 150px;
+height: 150px;
+
+
+}
+header>h1{
+    color: rgb(0, 207, 0);
+    margin-left: 1cm;
+}
+    
+button>img{
+    width: 120px;
+    height: 120px;
+    border-radius:10px;
+}
+</style>
+<body>
+    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÚSICAS</h1></header>
+    <button onclick="voltaraba()">Voltar</button>
+    <script>
+        function voltar(){
+            window.location.href="./mainPage.html"
+        }
+            function voltaraba(){
+            window.location.href="./organizacao.html"
+        }
+    </script>
+</body>
+</html>
