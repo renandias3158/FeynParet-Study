@@ -42,6 +42,22 @@ button>img{
     height: 120px;
     border-radius:10px;
 }
+button.voltar{
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+button.voltar:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+
 </style>
 <body>
     <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÉTODOS DE ESTUDO</h1></header>
@@ -51,7 +67,7 @@ button>img{
     <button onclick="feyn()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgfK4UbMUoOoWmFb4gOSlgeGw07hZhNjPo3Q&s">Feynman</button>
     <button onclick="resumo()"><img src="https://www.somosicev.com/wp-content/uploads/2018/05/Captura-de-Tela-2018-05-23-%C3%A0s-16.20.50.png">Resumos</button>
     </div>
-    <button onclick="voltar()">Voltar</button>
+    <button class="voltar" onclick="voltar()">Voltar</button>
     <script>
         function pomodoro(){
             window.location.href="./pomodoro.html"

@@ -6,6 +6,11 @@
     <title>Pareto</title>
 </head>
 <style>
+body{
+    display: flex;
+    flex-direction: column;
+}
+
 header{
     grid-area: h;
     display: flex;
@@ -14,9 +19,23 @@ header{
 header>img{
 width: 150px;
 height: 150px;
-
-
 }
+div>button{
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+div>button:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+
 header>h1{
     color: rgb(0, 207, 0);
     margin-left: 1cm;
@@ -27,10 +46,36 @@ button>img{
     height: 120px;
     border-radius:10px;
 }
+ol{
+font-weight:600
+}
+ol:hover{
+    transition-duration: 0.5s;
+    transform: scale(101%);
+}
+ul{
+    font-size: 180%;
+}
 </style>
 <body>
     <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÉTODO PARETO</h1></header>
+        <h1>O método Pareto consiste  no estilo 20/80, em que 20% é o esforço aplicado e 80% é o resultado obtido. Pegando o exemplo de uma prova da escola, você estudaria os 20% do conteúdo que são mais importantes e tem mais chance de cair na prova e geraria 80% do resultado, neste exemplo seria o restante do assunto que cai com menos frequência na prova.</h1>
+    <h2>Benefícios: </h2>                                   
+	<ul>
+        <ol>1. Aumenta a produtividade, você irá parar de desperdiçar seu tempo com algo não irrelevante ;</ol>
+        <ol>2. Maior eficiência, você estará dando prioridade ao que mais imposta;</ol>
+        <ol>3. Organiza os assuntos por prioridade e relevância;</ol>
+    </ul>
+</div>
+
+<div>
+    <h2>Como realizar o método:</h2>
+
+	<h3>1° Descubra os 20% do assunto que mais caem com frequência;<br>
+2° Dedique a maior parte do seu tempo estudando eles;<br>
+3° Após estudar esses 20%, estude os 80% restante</h3>
     <button onclick="voltaraba()">Voltar</button>
+</div>
     <script>
         function voltar(){
             window.location.href="./mainPage.html"

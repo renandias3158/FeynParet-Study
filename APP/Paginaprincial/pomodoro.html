@@ -6,6 +6,11 @@
     <title>Pomodoro</title>
 </head>
 <style>
+body{
+    display: flex;
+    flex-direction: column;
+}
+
 header{
     grid-area: h;
     display: flex;
@@ -14,9 +19,23 @@ header{
 header>img{
 width: 150px;
 height: 150px;
-
-
 }
+div>button{
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+div>button:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+
 header>h1{
     color: rgb(0, 207, 0);
     margin-left: 1cm;
@@ -27,10 +46,38 @@ button>img{
     height: 120px;
     border-radius:10px;
 }
+ol{
+font-weight:600
+}
+ol:hover{
+    transition-duration: 0.5s;
+    transform: scale(101%);
+}
+ul{
+    font-size: 180%;
+}
 </style>
 <body>
+<div>
     <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÉTODO POMODORO</h1></header>
+    <h1>O método modo Pomodoro é ideal para pessoas que não conseguem focar em algo por muito tempo, então são divididos tempos de 25 minutos para estudo e 5 minutos para descanso.</h1>
+    <h2>Benefícios: </h2>                                   
+	<ul>
+        <ol>1. Melhora na produtividade;</ol>
+        <ol>2. melhora no foco, evitando distrações;</ol>
+        <ol>3. Melhora na produtividade;</ol>
+        <ol>4. melhora no foco, evitando distrações;</ol>
+        <ol>5. Evita a procrastinação pois você estuda de forma fracionada com um tempo relativamente curto.</ol>
+    </ul>
+</div>
+
+<div>
+    <h2>Como realizar o método:</h2>
+
+	<h3>Selecione o Assunto que você quer estudar e pegue um cronômetro, coloque ele com um tempo de 25 minutos após ele apitar você terá 5 minutos<br> de descanso e assim se repete até o 4º ciclo em que você terá uma pausa maior de 15-30 minutos. Após Isso repita tudo de novo</h3>
     <button onclick="voltaraba()">Voltar</button>
+</div>
+
     <script>
         function voltar(){
             window.location.href="./mainPage.html"

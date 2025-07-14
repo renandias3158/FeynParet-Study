@@ -42,6 +42,21 @@ button>img{
     height: 120px;
     border-radius:10px;
 }
+button.voltar{
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+button.voltar:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
 </style>
 <body>
     <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>ORGANIZAÇÃO</h1></header>
@@ -51,7 +66,7 @@ button>img{
     <button onclick="horarios()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmPWksraiGNLnHReLJsQct5keGFeDopFd5bw&s">Horários</button>
     <button onclick="musicas()"><img src="https://uploads.giromarilia.com.br/2024/08/uenE6shJ-thumbnail-for-2339233_1634656940.jpg">Músicas</button>
     </div>
-    <button onclick="voltar()">Voltar</button>
+    <button class="voltar" onclick="voltar()">Voltar</button>
     <script>
         function ambiente(){
             window.location.href="./ambienteestudo.html"
