@@ -28,19 +28,102 @@ button>img{
     border-radius:10px;
 }
 div{
+    width: 700px;
+    height: 600px;
     display: grid;
+    grid-template-columns: 1100px;
 }
+div>table,tr,td,th{
+    border:1px solid black;
+    background-color: rgb(221, 221, 221);
+    font-size: 130%;
+    transition-duration: 0.5s;
+    
+}
+td:hover{
+    transition-duration: 0.3s;
+    background-color: rgba(0, 207, 0, 0.555);
+    color: rgba(255, 0, 0, 0.520);;
+}
+button.voltar{
+    margin-top: 1cm;
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+button.voltar:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+td>button{
+    margin-left: 0.5cm;
+    margin-top: 1cm;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.1s;
+    border-radius: 10px;
+    font-size: 100%;
+}
+td>button:hover{
+    transition-duration: 0.1s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+
 </style>
 <body>
     <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>SITES PARA ESTUDOS</h1></header>
-    <div></div>
-    <button onclick="voltaraba()">Voltar</button>
+    <div>
+    <table>
+        <tr>
+            <th>Sites</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Brasil Escola</td>
+            <td><button onclick="brasilescola()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Mundo Educação</td>
+            <td><button onclick="mundoeducacao()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Toda matéria</td>
+            <td><button onclick="todamateria()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>UOL educação</td>
+            <td><button onclick="uoleducacao()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+    <button class="voltar" onclick="voltaraba()">Voltar</button>
     <script>
         function voltar(){
             window.location.href="./mainPage.html"
         }
-            function voltaraba(){
+        function voltaraba(){
             window.location.href="./fontes.html"
+        }
+        function brasilescola(){
+            window.location.href="https://brasilescola.uol.com.br/"
+        }
+        function mundoeducacao(){
+            window.location.href="https://mundoeducacao.uol.com.br/"
+        }
+        function todamateria(){
+            window.location.href="https://www.todamateria.com.br/"
+        }
+        function uoleducacao(){
+            window.location.href="https://educacao.uol.com.br/"
         }
     </script>
 </body>

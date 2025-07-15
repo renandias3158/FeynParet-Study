@@ -27,16 +27,292 @@ button>img{
     height: 120px;
     border-radius:10px;
 }
+div{
+    width: 700px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1100px;
+}
+div>table,tr,td,th{
+    border:1px solid black;
+    background-color: rgb(221, 221, 221);
+    font-size: 130%;
+    transition-duration: 0.5s;
+    
+}
+td:hover{
+    transition-duration: 0.3s;
+    background-color: rgba(0, 207, 0, 0.555);
+    color: rgba(255, 0, 0, 0.520);;
+}
+button.voltar{
+    margin-top: 1cm;
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+button.voltar:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+td>button{
+    margin-left: 0.5cm;
+    margin-top: 1cm;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.1s;
+    border-radius: 10px;
+    font-size: 100%;
+}
+td>button:hover{
+    transition-duration: 0.1s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+table{
+    margin-top: 2cm;
+}
+
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>CANAIS DO YOUTUBE PARA ASSUNTOS GERAIS</h1></header>
-    <button onclick="voltaraba()">Voltar</button>
+    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>CANAIS DO YOUTUBE</h1></header>
+
+    <div>
+    <table>
+        <tr>
+            <th>Matemática</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Gis com Giz</td>
+            <td><button onclick="canal1()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Ferreto</td>
+            <td><button onclick="canal2()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Pota Concurseiro</td>
+            <td><button onclick="canal3()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+        <div>
+    <table>
+        <tr>
+            <th>História</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Parabólica</td>
+            <td><button onclick="canal4()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Por amor à História</td>
+            <td><button onclick="canal5()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+            <div>
+    <table>
+        <tr>
+            <th>Biologia</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Biologia com Samuel Cunha</td>
+            <td><button onclick="canal6()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Me Gusta Bio</td>
+            <td><button onclick="canal7()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+    <div>
+    <table>
+        <tr>
+            <th>geografia</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Geobrasil</td>
+            <td><button onclick="canal8()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Geo ilustrada</td>
+            <td><button onclick="canal9()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+        <div>
+    <table>
+        <tr>
+            <th>Português</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Professor Noslen</td>
+            <td><button onclick="canal10()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Professora Pamba</td>
+            <td><button onclick="canal11()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Pota Concurseiro</td>
+            <td><button onclick="canal12()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+        <div>
+    <table>
+        <tr>
+            <th>Inglês</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Teacher Elza</td>
+            <td><button onclick="canal13()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Marcela Mallet</td>
+            <td><button onclick="canal14()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>PROFESSOR KENNY</td>
+            <td><button onclick="canal15()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+        <div>
+    <table>
+        <tr>
+            <th>Química</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>QUÍMICA O MONSTRO</td>
+            <td><button onclick="canal16()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>proflardiao</td>
+            <td><button onclick="canal17()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+     <div>
+    <table>
+        <tr>
+            <th>Física</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Professor Boaro</td>
+            <td><button onclick="canal18()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Davi Oliveira - Física 2.0</td>
+            <td><button onclick="canal19()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+     <div>
+    <table>
+        <tr>
+            <th>Programação</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Curso em vídeo</td>
+            <td><button onclick="canal20()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+
+    <button class="voltar" onclick="voltaraba()">Voltar</button>
     <script>
         function voltar(){
             window.location.href="./mainPage.html"
         }
-            function voltaraba(){
-            window.location.href="./fontes.html"
+        function voltaraba(){
+            window.location.href="./organizacao.html"
+        }
+        function canal1(){
+            window.location.href="https://www.youtube.com/@Giscomgiz"
+        }
+        function canal2(){
+            window.location.href="https://www.youtube.com/@professorferretto"
+        }
+        function canal3(){
+            window.location.href="https://www.youtube.com/@PotaConcurseiro/videoshttps://www.youtube.com/@PotaConcurseiro/videos"
+        }
+        function canal4(){
+            window.location.href="https://www.youtube.com/@Parab%C3%B3lica"
+        }
+        function canal5(){
+            window.location.href="https://www.youtube.com/c/Poramor%C3%A0Hist%C3%B3ria"
+        }
+        function canal6(){
+            window.location.href="https://www.youtube.com/@professorsamuelcunha"
+        }
+        function canal7(){
+            window.location.href="https://www.youtube.com/@megustabio"
+        }
+        function canal8(){
+            window.location.href="https://www.youtube.com/@Geobrasil"
+        }
+        function canal9(){
+            window.location.href="https://www.youtube.com/@geoilustrada/fea"
+        }
+        function canal10(){
+            window.location.href="https://www.youtube.com/@ProfessorNoslen"
+        }
+        function canal11(){
+            window.location.href="https://www.youtube.com/@ProfessoraPamba"
+        }
+        function canal12(){
+            window.location.href="https://www.youtube.com/@PotaConcurseiro/videos"
+        }
+        function canal13(){
+            window.location.href="https://www.youtube.com/@TeacherElza"
+        }
+        function canal14(){
+            window.location.href="https://www.youtube.com/@MarcelaMallett"
+        }
+        function canal15(){
+            window.location.href="https://www.youtube.com/@PROFESSORKENNYOFICIAL"
+        }
+        function canal16(){
+            window.location.href="https://www.youtube.com/c/QU%C3%8DMICADOMONSTRO"
+        }
+        function canal17(){
+            window.location.href="https://www.youtube.com/@proflardiao"
+        }
+        function canal18(){
+            window.location.href="https://www.youtube.com/@professorboaro"
+        }
+        function canal19(){
+            window.location.href="https://www.youtube.com/@Fisica2.0"
+        }
+        function canal20(){
+            window.location.href="https://www.youtube.com/c/CursoemV%C3%ADdeo"
         }
     </script>
 </body>

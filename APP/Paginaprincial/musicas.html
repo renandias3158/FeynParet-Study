@@ -27,16 +27,143 @@ button>img{
     height: 120px;
     border-radius:10px;
 }
+div{
+    width: 700px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1100px;
+}
+div>table,tr,td,th{
+    border:1px solid black;
+    background-color: rgb(221, 221, 221);
+    font-size: 130%;
+    transition-duration: 0.5s;
+    
+}
+td:hover{
+    transition-duration: 0.3s;
+    background-color: rgba(0, 207, 0, 0.555);
+    color: rgba(255, 0, 0, 0.520);;
+}
+button.voltar{
+    margin-top: 1cm;
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+button.voltar:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+td>button{
+    margin-left: 0.5cm;
+    margin-top: 1cm;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.1s;
+    border-radius: 10px;
+    font-size: 100%;
+}
+td>button:hover{
+    transition-duration: 0.1s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+table{
+    margin-top: 2cm;
+}
+
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÚSICAS</h1></header>
-    <button onclick="voltaraba()">Voltar</button>
+    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MUSICAS</h1></header>
+    <div>
+    <table>
+        <tr>
+            <th>Lo-Fi</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Lofi Study 2025</td>
+            <td><button onclick="musica1()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Lofi Girl-Beats to relax/ Study to</td>
+            <td><button onclick="musica2()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Study Lofi 2025 📚 top 100</td>
+            <td><button onclick="musica3()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+        <div>
+    <table>
+        <tr>
+            <th>Clássica</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>Musica Classica Relax Study</td>
+            <td><button onclick="musica4()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>Classical Music for Studying- Músicas Clássicas para estudar</td>
+            <td><button onclick="musica5()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+        <div>
+    <table>
+        <tr>
+            <th>Phonk</th>
+            <th>Links</th>
+        </tr>
+        <tr>
+            <td>PHONK SONGS 2025 HITS AGRESSIVE GYM PHOKS</td>
+            <td><button onclick="musica6()">Clique aqui!</button></td>
+        </tr>
+        <tr>
+            <td>matemática e física insana</td>
+            <td><button onclick="musica7()">Clique aqui!</button></td>
+        </tr>
+    </table>
+    </div>
+    <button class="voltar" onclick="voltaraba()">Voltar</button>
     <script>
         function voltar(){
             window.location.href="./mainPage.html"
         }
-            function voltaraba(){
+        function voltaraba(){
             window.location.href="./organizacao.html"
+        }
+        function musica1(){
+            window.location.href="https://open.spotify.com/playlist/6zCID88oNjNv9zx6puDHKj?si=XUDRsx5KQDift0lOeMaP1A&pi=Qe-_STguRyeQX"
+        }
+        function musica2(){
+            window.location.href="https://open.spotify.com/playlist/0vvXsWCC9xrXsKd4FyS8kM?si=B0f9SYSWTYexL3caFURmlQ&pi=sKNrzTQyRhmI7"
+        }
+        function musica3(){
+            window.location.href="https://open.spotify.com/playlist/671ZWlQMPSY2IO6Ot7b57V?si=bIlegmhBTzuc3hFODQzDxA"
+        }
+        function musica4(){
+            window.location.href="https://open.spotify.com/playlist/1kGtBpJnR0bPWX4JXi5wUo?si=zZRyUIpCQPSX1Xl2uyocbg"
+        }
+        function musica5(){
+            window.location.href="https://open.spotify.com/playlist/7FbJrWukQQxFMlmNnr1zqk?si=Rl4I-OMnRhu-45BvHuOo-Q"
+        }
+        function musica6(){
+            window.location.href="https://open.spotify.com/playlist/7jucyRFk66ag3ALFZZ8pAt?si=Ny7CMbFkSbujFcFc20gAig"
+        }
+        function musica7(){
+            window.location.href="https://open.spotify.com/playlist/7A0VWY9pkWt59zl6sqDcN5?si=hf8AooY8R-maZ3sgMqZzQA&pi=XEjsrk8ZTg6Mt"
         }
     </script>
 </body>
