@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<style>
+header{
+    grid-area: h;
+    display: flex;
+
+}
+header>img{
+width: 150px;
+height: 150px;
+
+
+}
+header>h1{
+    color: rgb(0, 207, 0);
+    margin-left: 1cm;
+}
+    
+button>img{
+    width: 120px;
+    height: 120px;
+    border-radius:10px;
+}
+input, label, form{
+    background-color: rgb(221, 221, 221);
+    border-radius: 20px;
+    border: none;
+    
+}
+form{
+    width: 800px;
+    height: 1000px;
+    display: flex;
+
+}
+</style>
+<body>
+    <header>
+        <img onclick="voltar()" src="images/Fparet.jpg">
+    </header>
+
+        <form>
+            <div>
+                <label for="nome" name="nome">Como gostaria de ser chamado?</label>
+            
+                <input type="text" placeholder="Nome"></input>
+            </div>
+
+            <div>
+                <label for="E-mail" name="E-mail">Qual o seu E-mail?</label>
+            
+                <input type="text" placeholder="E-mail"></input>
+            </div>
+
+            <div>
+                <label for="senha" name="senha" >Qual a sua senha?</label>
+            
+                <input type="text" placeholder="senha"></input>
+            </div>
+            <input type="submit" placeholder="Ir para a próxima página"></input>
+        </form>
+
+        <button onclick="voltar()">Voltar</button>
+    <script>
+        function voltar(){
+            window.location.href="./mainPage.html"
+        }
+        function prosseg(){
+            window.location.href="./fo2.html"
+        }
+    </script>
+</body>
+</html>
