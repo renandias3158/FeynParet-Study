@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos</title>
+</head>
+<style>
+header{
+    grid-area: h;
+    display: flex;
+
+}
+header>img{
+width: 150px;
+height: 150px;
+
+
+}
+header>h1{
+    color: rgb(0, 207, 0);
+    margin-left: 1cm;
+}
+.escolhas>button{  
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+    border: none;
+    background-color:rgb(221, 221, 221); ;
+    margin-bottom: 30px;
+    transition-duration: 0.5s;
+}
+
+.escolhas>button:hover{
+    transform: scale(105%);
+    background-color:rgb(184, 184, 184);
+    transition-duration: 0.5s; 
+}
+    
+button>img{
+    width: 120px;
+    height: 120px;
+    border-radius:10px;
+}
+button.voltar{
+    height: 40px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    background-color: rgb(221, 221, 221);
+    transition-duration: 0.5s;
+    border-radius: 10px;
+}
+button.voltar:hover{
+    transition-duration: 0.5s;
+    transform: scale(110%);
+    background-color: rgba(255, 0, 0, 0.520);
+    color: rgba(0, 255, 0, 0.712);
+}
+
+</style>
+<body>
+    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÉTODOS DE ESTUDO</h1></header>
+    <div class="escolhas">
+    <button onclick="pomodoro()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjwpK-c7vEPJ8nOyosWJN68VOZZqrWd-xqsA&s">Pomodoro</button>
+    <button onclick="paret()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeyvxZCM7C-QwrORR79UmsWmO3-5FUYyPCpJIOT25mEP0mJUHFOkQgxluLDl7NaLSjpNA&usqp=CAU">Pareto</button>
+    <button onclick="feyn()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgfK4UbMUoOoWmFb4gOSlgeGw07hZhNjPo3Q&s">Feynman</button>
+    <button onclick="resumo()"><img src="https://www.somosicev.com/wp-content/uploads/2018/05/Captura-de-Tela-2018-05-23-%C3%A0s-16.20.50.png">Resumos</button>
+    </div>
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    <script>
+        function pomodoro(){
+            window.location.href="./pomodoro.html"
+        }
+        function paret(){
+            window.location.href="./paret.html"
+        }
+        function feyn(){
+            window.location.href="./feyn.html"
+        }
+        function resumo(){
+            window.location.href="./resumo.html"
+        }
+        function voltar(){
+            window.location.href="./mainPage.html"
+        }
+    </script>
+</body>
+</html>

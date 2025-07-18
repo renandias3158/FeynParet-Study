@@ -1,26 +1,21 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request 
+import banco
 
 app = Flask(__name__)
 
+banco.create_usuario()
+
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    nome = None
-    senha = None
+def fo():
     if request.method == 'POST':
+        
         nome = request.form.get('nome')
+        email = request.form.get('E-mail')
         senha = request.form.get('senha')
-    return render_template('page_login.html', nome=nome, senha=senha)
-
-@app.route('/newaccount')
-def new_account():
-    newnome = None
-    newsenha = None
-    if request.method == 'POST':
-        newnome = request.form.get('newnome')
-        newsenha = request.form.get('newsenha')
-    return render_template('page_newaccount.html', newnome=newnome, newsenha=newsenha)
-
-
+        db = banco.insert_usuario(nome, email, senha)
+        render_template('fo.html', db = db)
+        return "Usuário cadastrado com sucesso!"       
+    
 if __name__ == '__main__':
     app.run(debug=True)
 

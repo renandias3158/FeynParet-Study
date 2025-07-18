@@ -16,8 +16,8 @@ def create_usuario(condb):
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         email TEXT UNIQUE,
-        senha TEXT NOT NULL);
-    ''')
+        senha TEXT NOT NULL)
+        ''')
     condb.commit()
 def insert_usuario(condb, nome, email, senha):
     cursor = condb.cursor()
@@ -42,7 +42,7 @@ def create_metodo(condb):
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS metodo (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL CHECK(nome IN ('Pomodoro', 'Feynman', 'Pareto')));
+        nome TEXT NOT NULL CHECK(nome IN ('Pomodoro', 'Feynman', 'Pareto')))
     ''')
     condb.commit()
 def insert_metodo(condb, nome):
@@ -71,7 +71,7 @@ def create_pomodoro(condb):
     tempo_trabalho INTEGER NOT NULL,
     tempo_descanso INTEGER NOT NULL,
     ciclos INTEGER NOT NULL,
-    FOREIGN KEY (id_metodo) REFERENCES metodo(id));
+    FOREIGN KEY (id_metodo) REFERENCES metodo(id))
     ''')
     condb.commit()
 def insert_pomodoro(condb, id, tempo_trabalho, tempo_descanso, ciclos):
@@ -102,7 +102,7 @@ def create_feynman(condb):
     conceito TEXT NOT NULL,
     modo_explicacao TEXT, 
     estrategia_revisao TEXT,
-    FOREIGN KEY (id_metodo) REFERENCES metodo(id));
+    FOREIGN KEY (id_metodo) REFERENCES metodo(id))
     ''')
     condb.commit()
 def insert_feyman(condb, id, conceito, modo_explicacao, estrategia_revisao):
@@ -132,7 +132,7 @@ def create_pareto(condb):
     id_metodo INTEGER PRIMARY KEY,
     percentual_foco INTEGER NOT NULL,
     impacto TEXT,
-    FOREIGN KEY (id_metodo) REFERENCES metodo(id));
+    FOREIGN KEY (id_metodo) REFERENCES metodo(id))
     ''')
     condb.commit()
 def insert_pareto(condb, id, percentual_foco, impacto):
@@ -159,7 +159,7 @@ def create_referencias(condb):
     id integer primary key autoincrement,
     nome text not null,
     referencias_link text unique key not null
-    );''')
+    )''')
     condb.commit()
 def insert_referencias(condb, referencias_link):
     cursor.execute('''
@@ -190,7 +190,7 @@ def create_playlist(condb):
         nome text not null unique key,
         id integer primary key autoincrement,
         link_p text not null
-        );
+        )
         ''')
     condb.commit()
 def insert_playlist(condb, link_p, nome):
@@ -230,7 +230,7 @@ def create_assunto(condb):
     FOREIGN KEY (id_playlist) REFERENCES playlist(id),
     FOREIGN KEY (id_referencia) REFERENCES referencia(id),
     FOREIGN KEY (id_metodo) REFERENCES metodo(id)
-    );
+    )
 ''')
     condb.commit()
 def insert_assunto(condb, nome, disciplina, id_usuario, id_playlist, id_referencia, id_metodo):
@@ -315,14 +315,11 @@ def verify_caixa(condb):
 
 
 create_usuario(condb)
-create_agenda(condb)
+create_assunto(condb)
 create_metodo(condb)
-insert_usuario(condb, "Davi", "jojo@aaa.ccc", "senha123")
-insert_caixa(condb, "estudar geografia", "estudar matematica", "estudar portugues", "estudar ingles", "estudar historia", "estudar quimica", "estudar fisica", "estudar biologia", "estudar filosofia", "estudar sociologia", "estudar artes", "estudar educacao fisica")
-for row in verify_caixa(condb):
-    print(row)
-for row in verify_usuario(condb):
-    print(row)
-for row in verify_metodo(condb):
-    print(row)
-condb.commit()
+create_pomodoro(condb)
+create_feynman(condb)
+create_pareto(condb)
+create_referencias(condb)
+create_playlist(condb)
+
