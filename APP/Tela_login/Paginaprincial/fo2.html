@@ -63,32 +63,35 @@ form{
 <body>
     <header>
         <img src="images/Fparet.jpg">
-        <h1>FORMULÁRIO</h1>
+        <h1>FORMULÁRIO PARTE 2</h1>
     </header>
 
         <form method= 'POST'>
             <div>
-                <label for="nome">Como gostaria de ser chamado?</label>
+                <label for="darkmode">Deseja mudar para modo escuro??</label>
 
-                <input type="text" placeholder="Nome" name="nome"></input>
+                <input type="radio" placeholder="Nome" value="branco"></input>
             </div>
 
             <div>
-                <label for="E-mail" >Qual o seu E-mail?</label>
+                <label for="music" >Qual o seu Tipo de música preferido para estudar?</label>
             
-                <input type="email" placeholder="E-mail" name="E-mail" required></input>
+                <input type="text" placeholder="Tipo de música preferido para estudar" name="music" required></input>
             </div>
 
             <div>
-                <label for="senha">Qual a sua senha?</label>
+                <label for="estudo">Qual o seu método de estudo mais recorrente?</label>
             
-                <input type="password" placeholder="senha"  name="senha" required></input>
+                <input type="text" placeholder="senha"  name="estudo" required></input>
             </div>
-            <input type="submit" onclick="prosseg()"></input>
+            <input type="submit" onclick="user()"></input>
         </form>
     <script>
         function prosseg(){
             window.location.href="./fo2.html"
+        }
+        function user(){
+            window.location.href="./user.html"
         }
     </script>
 </body>
