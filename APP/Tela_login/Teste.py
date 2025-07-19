@@ -2,8 +2,8 @@ from flask import Flask, url_for, render_template, request
 import banco
 
 app = Flask(__name__)
-
-banco.create_usuario()
+condb = banco.condb
+banco.create_usuario(condb)
 
 @app.route('/', methods = ['GET', 'POST'])
 def tela_login():

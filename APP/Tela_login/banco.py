@@ -16,8 +16,8 @@ def create_usuario(condb):
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         email TEXT UNIQUE,
-        senha TEXT NOT NULL)
-        ''')
+        senha TEXT NOT NULL);
+    ''')
     condb.commit()
 def insert_usuario(condb, nome, email, senha):
     cursor = condb.cursor()
@@ -27,22 +27,28 @@ def verify_usuario(condb):
     cursor = condb.cursor()
     cursor.execute('SELECT * FROM usuario;')
     return cursor.fetchall()
-def update_usuario(condb, id, nome, email, senha):
+def update_usuario(condb, id, n_nome, n_email, n_senha, email, senha):
     cursor = condb.cursor()
-    cursor.execute('UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ?;', (nome, email, senha, id))
+    cursor.execute('UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ? OR (email = ? AND senha = ?);', (n_nome, n_email, n_senha, id, email, senha))
     condb.commit()
 def delete_usuario(condb, id):
     cursor = condb.cursor()
     cursor.execute('DELETE FROM usuario WHERE id = ?;', (id,))
     condb.commit()
-
+def verifica_usuario(email, senha):
+    cursor = condb.cursor()
+    cursor.execute('select *from usuario where email = ? and senha = ?;', (email,senha))
+    usuario = cursor.fetchone()
+    if usuario is None:
+        return False
+    return True
 # CRUD METODO
 def create_metodo(condb):
     cursor = condb.cursor()
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS metodo (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL CHECK(nome IN ('Pomodoro', 'Feynman', 'Pareto')))
+        nome TEXT NOT NULL CHECK(nome IN ('Pomodoro', 'Feynman', 'Pareto')));
     ''')
     condb.commit()
 def insert_metodo(condb, nome):
@@ -71,7 +77,7 @@ def create_pomodoro(condb):
     tempo_trabalho INTEGER NOT NULL,
     tempo_descanso INTEGER NOT NULL,
     ciclos INTEGER NOT NULL,
-    FOREIGN KEY (id_metodo) REFERENCES metodo(id))
+    FOREIGN KEY (id_metodo) REFERENCES metodo(id));
     ''')
     condb.commit()
 def insert_pomodoro(condb, id, tempo_trabalho, tempo_descanso, ciclos):
@@ -102,7 +108,7 @@ def create_feynman(condb):
     conceito TEXT NOT NULL,
     modo_explicacao TEXT, 
     estrategia_revisao TEXT,
-    FOREIGN KEY (id_metodo) REFERENCES metodo(id))
+    FOREIGN KEY (id_metodo) REFERENCES metodo(id));
     ''')
     condb.commit()
 def insert_feyman(condb, id, conceito, modo_explicacao, estrategia_revisao):
@@ -132,7 +138,7 @@ def create_pareto(condb):
     id_metodo INTEGER PRIMARY KEY,
     percentual_foco INTEGER NOT NULL,
     impacto TEXT,
-    FOREIGN KEY (id_metodo) REFERENCES metodo(id))
+    FOREIGN KEY (id_metodo) REFERENCES metodo(id));
     ''')
     condb.commit()
 def insert_pareto(condb, id, percentual_foco, impacto):
@@ -154,30 +160,35 @@ def delete_pareto(condb, id):
 
 #CRUD REFERENCIAS
 def create_referencias(condb):
+    cursor = condb.cursor()
     cursor.execute('''
     create table if not exists referencias(
     id integer primary key autoincrement,
     nome text not null,
-    referencias_link text unique key not null
-    )''')
+    referencias_link text unique not null
+    );''')
     condb.commit()
-def insert_referencias(condb, referencias_link):
+def insert_referencias(condb,nome, referencias_link):
+    cursor = condb.cursor()
     cursor.execute('''
-    INSERT INTO referencias(referencias_link) VALUES (?,?,?)
-''',(referencias_link))
+    INSERT INTO referencias(nome, referencias_link) VALUES (?,?)
+''',(nome, referencias_link))
     condb.commit()
 def verify_referencias(condb):
+    cursor = condb.cursor()
     cursor.execute('''
     SELECT * FROM referencias;
 ''')
     return cursor.fetchall()
-def update_referencias(condb, referencias_link, id):
+def update_referencias(condb, nome,referencias_link, id):
+    cursor = condb.cursor()
     cursor.execute('''
-    UPDATE metodo SET referencias_link = ? = ?
+    UPDATE referencias SET nome = ?, referencias_link = ?
     WHERE id = ?
-''',(referencias_link, id))
-    condb.commit
+''',(nome,referencias_link, id))
+    condb.commit()
 def delete_referencias(condb, id):
+    cursor = condb.cursor()
     cursor.execute('''
     DELETE FROM referencias WHERE id = ?;
 ''', (id,))
@@ -185,30 +196,35 @@ def delete_referencias(condb, id):
 
 #CRUD PLAYLIST
 def create_playlist(condb):
+    cursor = condb.cursor()
     cursor.execute('''
     create table if not exists playlist(
-        nome text not null unique key,
+        nome text not null unique,
         id integer primary key autoincrement,
         link_p text not null
-        )
+        );
         ''')
     condb.commit()
 def insert_playlist(condb, link_p, nome):
+  cursor = condb.cursor()
   cursor.execute('''
   INSERT INTO playlist(link_p, nome) VALUES (?,?)
   ''', (link_p,nome))
   condb.commit()
 def verify_playlist(condb):
+  cursor = condb.cursor()
   cursor.execute('''
   SELECT * FROM playlist;
   ''')
   return cursor.fetchall()
-def update_playlist(nome,condb,link_p,id):
+def update_playlist(condb,nome,link_p,id):
+  cursor = condb.cursor()
   cursor.execute('''
   UPDATE playlist SET nome = ?, link_p = ? WHERE id = ?;
   ''', (nome,link_p,id))
   condb.commit()
 def delete_playlist(condb,id):
+  cursor = condb.cursor()
   cursor.execute('''
   DELETE FROM playlist WHERE id = ?
   ''',(id,))
@@ -216,29 +232,30 @@ def delete_playlist(condb,id):
 
 #CRUD ASSUNTO
 def create_assunto(condb):
+    cursor = condb.cursor()
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS assunto(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT UNIQUE KEY NOT NULL,
+    nome TEXT UNIQUE NOT NULL,
     disciplina TEXT NOT NULL,
     id_usuario INTEGER NOT NULL,
     id_metodo INTEGER NOT NULL,
     id_referencias INTEGER NOT NULL,
     id_playlist INTEGER NULL,
     
-    FOREIGN (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
     FOREIGN KEY (id_playlist) REFERENCES playlist(id),
-    FOREIGN KEY (id_referencia) REFERENCES referencia(id),
+    FOREIGN KEY (id_referencias) REFERENCES referencias(id),
     FOREIGN KEY (id_metodo) REFERENCES metodo(id)
-    )
+    );
 ''')
     condb.commit()
-def insert_assunto(condb, nome, disciplina, id_usuario, id_playlist, id_referencia, id_metodo):
+def insert_assunto(condb, nome, disciplina, id_usuario, id_playlist, id_referencias, id_metodo):
     cursor = condb.cursor()
     cursor.execute('''
-        INSERT INTO assunto (nome, disciplina, id_usuario, id_playlist, id_referencia, id_metodo)
+        INSERT INTO assunto (nome, disciplina, id_usuario, id_playlist, id_referencias, id_metodo)
         VALUES (?, ?, ?, ?, ?, ?);
-    ''', (nome, disciplina, id_usuario, id_playlist, id_referencia, id_metodo))
+    ''', (nome, disciplina, id_usuario, id_playlist, id_referencias, id_metodo))
     condb.commit()
 def verify_assuntos(condb):
     cursor = condb.cursor()
@@ -246,13 +263,13 @@ def verify_assuntos(condb):
         SELECT * FROM assunto;
     ''')
     return cursor.fetchall()
-def update_assunto(condb, nome, disciplina, id_playlist, id_referencia, id_metodo, id):
+def update_assunto(condb, nome, disciplina, id_playlist, id_referencias, id_metodo, id):
     cursor = condb.cursor()
     cursor.execute('''
         UPDATE assunto
-        SET nome = ?, disciplina = ?, id_playlist = ?, id_referencia = ?, id_metodo = ?
+        SET nome = ?, disciplina = ?, id_playlist = ?, id_referencias = ?, id_metodo = ?
         WHERE id = ?;
-    ''', (nome, disciplina, id_playlist, id_referencia, id_metodo, id))
+    ''', (nome, disciplina, id_playlist, id_referencias, id_metodo, id))
     condb.commit()
 def delete_assunto(condb, id):
     cursor = condb.cursor()
@@ -263,63 +280,17 @@ def delete_assunto(condb, id):
 
 
 
-def create_agenda(condb):
-    cursor.execute('''
-    create table if not exists caixa(
-    id integer primary key autoincrement,
-    um text null,
-    dois text null,
-    tres text null,
-    quatro text null,
-    cinco text null,
-    seis text null,
-    sete text null,
-    oito text null,
-    nove text null,
-    dez text null,
-    onze text null,
-    doze text null
-    )
-    ''')
 
-
-def insert_caixa(condb,um = "Livre", dois = "Livre", tres = "Livre", quatro = "Livre", cinco = "Livre", seis = "Livre", sete = "Livre", oito = "Livre", nove = "Livre", dez = "Livre", onze = "Livre", doze = "Livre"):
-    cursor.execute('''
-    insert into caixa(um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez, onze, doze) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);
-    ''', (um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez, onze, doze))
-
-
-    cursor.execute('''
-    select * from metodo;
-    ''')
-    return cursor.fetchall()
-
-
-
-def create_organização(condb):
-    cursor.execute('''
-    create table if not exists organizaçao(
-        id integer primary key autoincrement,
-        tipo text not null,
-        nome text not null
-    )
-    ''')
-
-
-
-def verify_caixa(condb):
-    cursor.execute('''
-    select * from caixa;
-    ''')
-    return cursor.fetchall()
 
 
 create_usuario(condb)
-create_assunto(condb)
 create_metodo(condb)
 create_pomodoro(condb)
 create_feynman(condb)
 create_pareto(condb)
 create_referencias(condb)
 create_playlist(condb)
+create_assunto(condb)
 
+
+condb.commit()
