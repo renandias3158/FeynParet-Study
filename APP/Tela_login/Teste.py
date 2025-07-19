@@ -1,9 +1,25 @@
-from flask import Flask, render_template, request 
+from flask import Flask, url_for, render_template, request 
 import banco
 
 app = Flask(__name__)
 
 banco.create_usuario()
+
+@app.route('/', methods = ['GET', 'POST'])
+def tela_login():
+    erro = ''
+    if request.method == 'POST':
+    
+        email = request.form('email')
+        senha = request.form('senha')
+        usuario =banco.verifica_usuario(email, senha)
+        if usuario:
+            return f'login realizado com sucesso, bem vindo,{email}!'
+        else:
+            erro = 'Email ou senha incorretos, tente novamente!'
+    return render_template('page_login.html' ,erro=erro)
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 def fo():
@@ -14,7 +30,7 @@ def fo():
         senha = request.form.get('senha')
         db = banco.insert_usuario(nome, email, senha)
         render_template('fo.html', db = db)
-        return "Usuário cadastrado com sucesso!"       
+            
     
 if __name__ == '__main__':
     app.run(debug=True)
