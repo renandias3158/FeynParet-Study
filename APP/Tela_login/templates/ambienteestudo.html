@@ -16,7 +16,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 }
@@ -60,7 +60,7 @@ ul{
 </style>
 <body>
 <div>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>AMBIENTES DE ESTUDO</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>AMBIENTES DE ESTUDO</h1></header>
     <h1>Um ambiente e estudo bem organizado é essencial para  quem realmente quer aproveitar ao máximo, pois isso evita distrações frequentes. Algumas dicas de organização são:</h1>                                  
 	<ul>
         <ol>1. Opte por estudar em algum local limpo e com boa iluminação  e principalmente que não seja relacionado a descanso, caso contrário seu cérebro associa que você está em um local para dormir e tende a realizar isso mesmo;</ol>
@@ -73,7 +73,9 @@ ul{
 </div>
 
 <div>
-    <button onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('organizacao') }}" >
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
 </div>
 
     <script>

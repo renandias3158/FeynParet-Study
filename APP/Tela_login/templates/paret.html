@@ -16,7 +16,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 }
@@ -58,7 +58,7 @@ ul{
 }
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÉTODO PARETO</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>MÉTODO PARETO</h1></header>
         <h1>O método Pareto consiste  no estilo 20/80, em que 20% é o esforço aplicado e 80% é o resultado obtido. Pegando o exemplo de uma prova da escola, você estudaria os 20% do conteúdo que são mais importantes e tem mais chance de cair na prova e geraria 80% do resultado, neste exemplo seria o restante do assunto que cai com menos frequência na prova.</h1>
     <h2>Benefícios: </h2>                                   
 	<ul>
@@ -74,7 +74,9 @@ ul{
 	<h3>1° Descubra os 20% do assunto que mais caem com frequência;<br>
 2° Dedique a maior parte do seu tempo estudando eles;<br>
 3° Após estudar esses 20%, estude os 80% restante</h3>
-    <button onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('metodosestudo') }}" >
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
 </div>
     <script>
         function voltar(){

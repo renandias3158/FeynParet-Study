@@ -11,7 +11,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 
@@ -59,14 +59,24 @@ button.voltar:hover{
 }
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>FONTES</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>FONTES</h1></header>
     <div class="escolhas">
+    <a href="{{ url_for('estudo') }}">
     <button onclick="estudo()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGoIIGBIIU3DCaRlbnkQP-WU3DkTE_Qw5Ucg&s">Sites para estudo</button>
+    </a>
+    <a href="{{ url_for('pesquisa') }}">
     <button onclick="pesquisa()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUWsnVQAtp6xJhsdYK7ASCAwUytgfTCIvylg&s">Sites para pesquisa</button>
+    </a>
+    <a href="{{ url_for('canais') }}">
     <button onclick="canais()"><img src="https://yt3.googleusercontent.com/u6H_TO65Atxmpc98XR-HcMFZ16o1UVppXqO7gj4hMUfz6H6YHjXZh4rLGTkyMHXNmeOfRFa0=s900-c-k-c0x00ffffff-no-rj">Youtube assuntos</button>
+    </a>
+    <a href="{{ url_for('metodos') }}">
     <button onclick="metodos()"><img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JpfMsav___iv4_u_gF4OyAA7DFANFvHy0w&s">Youtube métodos</button>
+    </a>
     </div>
+    <a href="{{ url_for('mainPage') }}">
     <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
     <script>
         function estudo(){
             window.location.href="./estudo.html"

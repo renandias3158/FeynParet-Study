@@ -37,7 +37,7 @@ height: 150px;
 .study{
     color:red;
 }
-div.botoes>button{
+div.botoes>a{
     height: 40px;
     width: 90px;
     margin-right: 20px;
@@ -46,7 +46,7 @@ div.botoes>button{
     transition-duration: 0.5s;
     border-radius: 10px;
 }
-div.botoes>button.vermelho:hover,main>button:hover{
+div.botoes>a.vermelho:hover,main>a:hover{
     transition-duration: 0.5s;
     transform: scale(110%);
     background-color: rgba(255, 0, 0, 0.520);
@@ -74,7 +74,7 @@ main{
 main>h2{
     font-size: 200%;
 }
-main>button{
+main>a{
     height: 40px;
     width: 120px;
     margin-right: 20px;
@@ -83,7 +83,7 @@ main>button{
     transition-duration: 0.5s;
     border-radius: 10px;
 }
-main>button:hover{
+main>a:hover{
     transition-duration: 0.5s;
     transform: scale(110%);
 }
@@ -93,7 +93,7 @@ aside{
     justify-content: right;
     flex-direction: column;
 }
-aside>button{
+aside>a{
     border-radius: 20px;
     width: 150px;
     height: 150px;
@@ -102,7 +102,7 @@ aside>button{
     margin-bottom: 30px;
     transition-duration: 0.5s;
 }
-aside>button:hover{
+aside>a:hover{
     transform: scale(105%);
     background-color:rgb(184, 184, 184);
     transition-duration: 0.5s; 
@@ -125,15 +125,17 @@ footer{
 <body>
 
 <header>
-<img src="images/Fparet.jpg">
+<img src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg">
 
 <div>
 <h1 class="feyn">Feynparet </h1><h1 class="study">Study</h1>
 </div>
 
 <div class="botoes">
-<button class="vermelho">Saiba mais</button>
+<button class="vermelho" onclick="saibaM()">Saiba mais</button>
+<a href="{{ url_for('user') }}">
 <button class="verde" onclick="user()">Usuário</button>
+</a>
 </div>
 
 
@@ -148,17 +150,23 @@ footer{
 <main><h2 class="alberto">“Lembre-se que as pessoas podem tirar tudo de você, menos o seu conhecimento.”
 <br>
 <em>Albert Einstein</em></h2>
-
+<a href="{{ url_for('fo') }}">
 <button onclick="fo()">Formulario</button>
-
+</a>
 <h2>Oque deseja aprender hoje?</h2>
 
 </main>
 
 <aside>
-<button onclick="metodosestudo()"><img src="https://s2.glbimg.com/iliegsNCb3sjC7asag5FWd5M1I4=/e.glbimg.com/og/ed/f/original/2020/05/04/thought-catalog-505eectw54k-unsplash.jpg">Métodos de estudo</button>
+<a href="{{ url_for('metodosestudo') }}" >
+<button ><img src="https://s2.glbimg.com/iliegsNCb3sjC7asag5FWd5M1I4=/e.glbimg.com/og/ed/f/original/2020/05/04/thought-catalog-505eectw54k-unsplash.jpg">Métodos de estudo</button>
+</a>
+<a href="{{ url_for('organizacao') }}" >
 <button onclick="organizacao()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLsai6b-xKlWR4C5rLDk62Q2U29_DUofP2Yw&s">Organização</button>
+</a>
+<a href="{{ url_for('fontes') }}" >
 <button onclick="fontes()"><img src="https://www.idebrasil.com.br/blog/wp-content/uploads/2018/02/Palestra-Empresarial-5-dicas-importantes-para-quem-vai-participar-850x441.jpg">Fontes</button>
+</a>
 </aside>
 
 <footer>
@@ -182,6 +190,9 @@ footer{
     function user(){
             window.location.href="./user.html"
         }
+    function saibaM(){
+            window.location.href="https://docs.google.com/document/d/1uz6VNaEPVryw1XurX-6ZBVzRYmoKsLo5v6u72QsvxGI/edit?usp=sharing"
+    }
 </script>
 </body>
 </html>

@@ -11,7 +11,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 
@@ -81,7 +81,7 @@ td>button:hover{
 
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>SITES PARA PESQUISAS</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>SITES PARA PESQUISAS</h1></header>
     <div>
     <table>
         <tr>
@@ -98,7 +98,9 @@ td>button:hover{
         </tr>
     </table>
     </div>
-    <button class="voltar" onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('fontes') }}">
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
     <script>
         function voltar(){
             window.location.href="./mainPage.html"

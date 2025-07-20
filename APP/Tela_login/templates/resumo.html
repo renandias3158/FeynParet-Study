@@ -16,7 +16,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 }
@@ -58,7 +58,7 @@ ul{
 }
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>RESUMOS</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>RESUMOS</h1></header>
         <h1>Este método consiste em você pegar todo o assunto e diminuir ele, escrevendo com suas próprias palavras.
 </h1>
     <h2>Benefícios: </h2>                                   
@@ -76,7 +76,9 @@ ul{
 2° Identifique as partes mais importantes do assunto;<br>
 3° Escreva com as suas palavras o assunto de forma tipificada e reduza ele<br>
 4° Revise o assunto pelo resumo.</h3>
-    <button onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('metodosestudo') }}" >
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
 </div>
     <script>
         function voltar(){

@@ -16,7 +16,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 }
@@ -60,7 +60,7 @@ ul{
 </style>
 <body>
 <div>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MATERIAIS DE ESTUDO</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>MATERIAIS DE ESTUDO</h1></header>
     <h1>Alguns objetos e materiais que podem ajudar nos seus momentos de estudo são:</h1>                                  
 	<ul>
         <ol>1. Boas luminárias em caso de um local pouco iluminado;</ol>
@@ -73,7 +73,9 @@ ul{
 </div>
 
 <div>
-    <button onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('organizacao') }}" >
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
 </div>
 
     <script>

@@ -11,7 +11,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 
@@ -83,7 +83,7 @@ table{
 
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>CANAIS DO YOUTUBE</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>CANAIS DO YOUTUBE</h1></header>
 
     <div>
     <table>
@@ -246,7 +246,9 @@ table{
     </table>
     </div>
 
-    <button class="voltar" onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('fontes') }}">
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
     <script>
         function voltar(){
             window.location.href="./mainPage.html"

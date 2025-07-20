@@ -16,7 +16,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 }
@@ -58,7 +58,7 @@ ul{
 }
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÉTODO FEYNMAN</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>MÉTODO FEYNMAN</h1></header>
         <h1>Este Método consiste em você tentar explicar o assunto estudado para uma outra pessoa ou você mesmo.</h1>
     <h2>Benefícios: </h2>                                   
 	<ul>
@@ -76,7 +76,9 @@ ul{
 2º Finja ensinar uma criança. Caso consiga usar uma linguagem clara e direta você realmente sabe sobre o assunto;<br>
 
 3º Caso perceba que está usando palavras mais complicadas e que até mesmo você não sabe explicar, então volte e estude o assunto novamente ou revise a parte que está sendo complicada  e comece tudo denovo.o</h3><br>
-    <button onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('metodosestudo') }}" >
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
 </div>
     <script>
         function voltar(){

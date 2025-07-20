@@ -16,7 +16,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 }
@@ -68,7 +68,7 @@ b:hover{
 </style>
 <body>
 <div>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>HORÁRIOS PARA ESTUDO</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>HORÁRIOS PARA ESTUDO</h1></header>
     <h1>Este tópico é altamente <b>pessoal</b> e pode haver várias divergências, mas as dicas a seguir podem ajudar muito </h1>                                  
 	<ul>
         <ol>1. Identifique se você é mais produtivo pela manhã, tarde ou noite;</ol>
@@ -82,7 +82,9 @@ b:hover{
 </div>
 
 <div>
-    <button onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('organizacao') }}" >
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
 </div>
     <script>
         function voltar(){

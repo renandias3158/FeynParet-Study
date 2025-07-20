@@ -16,7 +16,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 }
@@ -59,7 +59,7 @@ ul{
 </style>
 <body>
 <div>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>MÉTODO POMODORO</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>MÉTODO POMODORO</h1></header>
     <h1>O método modo Pomodoro é ideal para pessoas que não conseguem focar em algo por muito tempo, então são divididos tempos de 25 minutos para estudo e 5 minutos para descanso.</h1>
     <h2>Benefícios: </h2>                                   
 	<ul>
@@ -75,7 +75,9 @@ ul{
     <h2>Como realizar o método:</h2>
 
 	<h3>Selecione o Assunto que você quer estudar e pegue um cronômetro, coloque ele com um tempo de 25 minutos após ele apitar você terá 5 minutos<br> de descanso e assim se repete até o 4º ciclo em que você terá uma pausa maior de 15-30 minutos. Após Isso repita tudo de novo</h3>
-    <button onclick="voltaraba()">Voltar</button>
+    <a href="{{ url_for('metodosestudo') }}" >
+    <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
 </div>
 
     <script>

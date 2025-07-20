@@ -11,7 +11,7 @@ header{
     display: flex;
 
 }
-header>img{
+.img{
 width: 150px;
 height: 150px;
 
@@ -59,14 +59,26 @@ button.voltar:hover{
 }
 </style>
 <body>
-    <header><img onclick="voltar()" src="images/Fparet.jpg"><h1>ORGANIZAÇÃO</h1></header>
+    <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>ORGANIZAÇÃO</h1></header>
     <div class="escolhas">
+    <a href="{{ url_for('ambienteestudo') }}">
     <button onclick="ambiente()"><img src="https://eaiamigo.com.br/wp-content/uploads/2023/06/ambiente-de-estudo.jpg">Ambiente de estudo</button>
+    </a>
+    <a href="{{ url_for('materiais') }}">
     <button onclick="materiais()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0aLmvpo1VPQHDK6Zt_0S9gks_NooerWTeA&s">Materiais</button>
+    </a>
+    <a href="{{ url_for('horarios') }}">
     <button onclick="horarios()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmPWksraiGNLnHReLJsQct5keGFeDopFd5bw&s">Horários</button>
+    </a>
+    <a href="{{ url_for('musicas') }}">
     <button onclick="musicas()"><img src="https://uploads.giromarilia.com.br/2024/08/uenE6shJ-thumbnail-for-2339233_1634656940.jpg">Músicas</button>
+    </a>
     </div>
+    
+    <a href="{{ url_for('mainPage') }}" >
     <button class="voltar" onclick="voltar()">Voltar</button>
+    </a>
+    
     <script>
         function ambiente(){
             window.location.href="./ambienteestudo.html"
