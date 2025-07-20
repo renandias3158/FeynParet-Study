@@ -3,13 +3,9 @@ import banco
 
 app = Flask(__name__)
 
-# Inicializa o banco de dados
+
 condb = banco.condb
 banco.create_usuario(condb)
-
-# ===============================
-# ROTAS DE PÁGINAS
-# ===============================
 
 @app.route('/canais', methods=['GET'])
 def canais():
@@ -83,9 +79,6 @@ def resumo():
 def user():
     return render_template('user.html')
 
-# ===============================
-# AUTENTICAÇÃO
-# ===============================
 
 @app.route('/login', methods=['GET', 'POST'])
 def tela_login():
@@ -104,15 +97,13 @@ def tela_login():
 def fo():
     if request.method == 'POST':
         nome = request.form.get('nome')
-        email = request.form.get('E-mail')  # Verifique se o campo no HTML tem o nome 'E-mail'
+        email = request.form.get('E-mail')  
         senha = request.form.get('senha')
         banco.insert_usuario(nome, email, senha)
         return render_template('fo.html', db=True)
     return render_template('fo.html', db=False)
 
-# ===============================
-# INÍCIO DO SERVIDOR
-# ===============================
+
 
 if __name__ == '__main__':
     app.run(debug=True)
