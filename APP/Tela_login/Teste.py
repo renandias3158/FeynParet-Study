@@ -1,7 +1,10 @@
-from flask import Flask, url_for, render_template, request 
+from flask import Flask, url_for, render_template, request, session, redirect, flash
+from flask_session import Session
+import os
 import banco
 
 app = Flask(__name__)
+
 condb = banco.condb
 banco.create_usuario(condb)
 

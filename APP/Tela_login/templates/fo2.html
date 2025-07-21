@@ -17,7 +17,7 @@ header{
     display: flex;
     
 }
-.img{
+header>img{
 width: 150px;
 height: 150px;
 }
@@ -62,7 +62,7 @@ form{
 </style>
 <body>
     <header>
-        <a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a>
+        <img src="images/Fparet.jpg">
         <h1>FORMULÁRIO PARTE 2</h1>
     </header>
 
@@ -82,11 +82,9 @@ form{
             <div>
                 <label for="estudo">Qual o seu método de estudo mais recorrente?</label>
             
-                <input type="text" placeholder="senha"  name="estudo" required></input>
+                <input type="text" placeholder="metodo?"  name="estudo" required></input>
             </div>
-            <a href="{{ url_for('user') }}">
             <input type="submit" onclick="user()"></input>
-            </a>
         </form>
     <script>
         function prosseg(){
