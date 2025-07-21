@@ -57,13 +57,23 @@ def metodosestudo():
 def musicas():
    return render_template('musicas.html')
 
-@app.route('/page_login')
+@app.route('/', methods = ['GET', 'POST'])
 def page_login():
-   return render_template('page_login.html')
+    erro = ''
+    if request.method == 'POST':
+    
+        email = request.form('email')
+        senha = request.form('senha')
+        usuario =banco.verifica_usuario(email, senha)
+        if usuario:
+            return f'login realizado com sucesso, bem vindo,{email}!'
+        else:
+            erro = 'Email ou senha incorretos, tente novamente!'
+    return render_template('page_login.html' ,erro=erro)
 
 @app.route('/page_newaccount')
 def page_newaccount():
-   return render_template('page_newaccount')
+   return render_template('page_newaccount.html')
 
 @app.route('/paret')
 def paret():

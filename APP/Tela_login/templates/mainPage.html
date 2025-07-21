@@ -37,7 +37,7 @@ height: 150px;
 .study{
     color:red;
 }
-div.botoes>a{
+header>div>button, .verde{
     height: 40px;
     width: 90px;
     margin-right: 20px;
@@ -46,13 +46,13 @@ div.botoes>a{
     transition-duration: 0.5s;
     border-radius: 10px;
 }
-div.botoes>a.vermelho:hover,main>a:hover{
+.vermelho:hover{
     transition-duration: 0.5s;
     transform: scale(110%);
     background-color: rgba(255, 0, 0, 0.520);
     color: rgba(0, 255, 0, 0.712);
 }
-div.botoes>button.verde:hover{
+.verde:hover{
     transition-duration: 0.5s;
     transform: scale(110%);
     background-color: rgba(0, 255, 0, 0.712);
@@ -74,7 +74,7 @@ main{
 main>h2{
     font-size: 200%;
 }
-main>a{
+main>.formu{
     height: 40px;
     width: 120px;
     margin-right: 20px;
@@ -83,7 +83,7 @@ main>a{
     transition-duration: 0.5s;
     border-radius: 10px;
 }
-main>a:hover{
+main>.formu:hover{
     transition-duration: 0.5s;
     transform: scale(110%);
 }
@@ -93,7 +93,7 @@ aside{
     justify-content: right;
     flex-direction: column;
 }
-aside>a{
+.botaoaside{
     border-radius: 20px;
     width: 150px;
     height: 150px;
@@ -102,7 +102,7 @@ aside>a{
     margin-bottom: 30px;
     transition-duration: 0.5s;
 }
-aside>a:hover{
+.botaoaside:hover{
     transform: scale(105%);
     background-color:rgb(184, 184, 184);
     transition-duration: 0.5s; 
@@ -150,8 +150,8 @@ footer{
 <main><h2 class="alberto">“Lembre-se que as pessoas podem tirar tudo de você, menos o seu conhecimento.”
 <br>
 <em>Albert Einstein</em></h2>
-<a href="{{ url_for('fo') }}">
-<button onclick="fo()">Formulario</button>
+<a href="{{ url_for('fo') }}" class="formu">
+<button onclick="fo()" >Formulario</button>
 </a>
 <h2>Oque deseja aprender hoje?</h2>
 
@@ -159,13 +159,13 @@ footer{
 
 <aside>
 <a href="{{ url_for('metodosestudo') }}" >
-<button ><img src="https://s2.glbimg.com/iliegsNCb3sjC7asag5FWd5M1I4=/e.glbimg.com/og/ed/f/original/2020/05/04/thought-catalog-505eectw54k-unsplash.jpg">Métodos de estudo</button>
+<button class="botaoaside"><img src="https://s2.glbimg.com/iliegsNCb3sjC7asag5FWd5M1I4=/e.glbimg.com/og/ed/f/original/2020/05/04/thought-catalog-505eectw54k-unsplash.jpg">Métodos de estudo</button>
 </a>
 <a href="{{ url_for('organizacao') }}" >
-<button onclick="organizacao()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLsai6b-xKlWR4C5rLDk62Q2U29_DUofP2Yw&s">Organização</button>
+<button onclick="organizacao()" class="botaoaside"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLsai6b-xKlWR4C5rLDk62Q2U29_DUofP2Yw&s">Organização</button>
 </a>
 <a href="{{ url_for('fontes') }}" >
-<button onclick="fontes()"><img src="https://www.idebrasil.com.br/blog/wp-content/uploads/2018/02/Palestra-Empresarial-5-dicas-importantes-para-quem-vai-participar-850x441.jpg">Fontes</button>
+<button onclick="fontes()" class="botaoaside"><img src="https://www.idebrasil.com.br/blog/wp-content/uploads/2018/02/Palestra-Empresarial-5-dicas-importantes-para-quem-vai-participar-850x441.jpg">Fontes</button>
 </a>
 </aside>
 

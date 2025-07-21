@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organização</title>
+    <title>Materiais</title>
 </head>
 <style>
+body{
+    display: flex;
+    flex-direction: column;
+}
+
 header{
     grid-area: h;
     display: flex;
@@ -14,35 +19,8 @@ header{
 .img{
 width: 150px;
 height: 150px;
-
-
 }
-header>h1{
-    color: rgb(0, 207, 0);
-    margin-left: 1cm;
-}
-.escolhas>button{  
-    border-radius: 20px;
-    width: 150px;
-    height: 150px;
-    border: none;
-    background-color:rgb(221, 221, 221); ;
-    margin-bottom: 30px;
-    transition-duration: 0.5s;
-}
-
-.escolhas>button:hover{
-    transform: scale(105%);
-    background-color:rgb(184, 184, 184);
-    transition-duration: 0.5s; 
-}
-    
-button>img{
-    width: 120px;
-    height: 120px;
-    border-radius:10px;
-}
-button.voltar{
+div>button{
     height: 40px;
     width: 90px;
     margin-right: 20px;
@@ -51,19 +29,44 @@ button.voltar{
     transition-duration: 0.5s;
     border-radius: 10px;
 }
-button.voltar:hover{
+div>button:hover{
     transition-duration: 0.5s;
     transform: scale(110%);
     background-color: rgba(255, 0, 0, 0.520);
     color: rgba(0, 255, 0, 0.712);
 }
+
+header>h1{
+    color: rgb(0, 207, 0);
+    margin-left: 1cm;
+}
+    
+button>img{
+    width: 120px;
+    height: 120px;
+    border-radius:10px;
+}
+ol{
+font-weight:600;
+margin-bottom: 20px;
+}
+ol:hover{
+    transition-duration: 0.5s;
+    transform: scale(101%);
+}
+ul{
+    font-size: 180%;
+}
 </style>
 <body>
+    
     <header><a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a><h1>USUÁRIO</h1></header>
     <h1>AAAAAAAAAAA</h1>
     <a href="{{ url_for('mainPage') }}">
     <button class="voltar" onclick="voltar()">Voltar</button>
     </a>
+
+
     <script>
         function voltar(){
             window.location.href="./mainPage.html"
@@ -71,3 +74,4 @@ button.voltar:hover{
     </script>
 </body>
 </html>
+
