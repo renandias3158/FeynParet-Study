@@ -1,5 +1,5 @@
 import sqlite3
-condb = sqlite3.connect("banco.db")
+condb = sqlite3.connect("banco.db", check_same_thread=False)
 cursor = condb.cursor()
 cursor.execute("PRAGMA foreign_keys = ON;")
 
@@ -35,13 +35,6 @@ def delete_usuario(condb, id):
     cursor = condb.cursor()
     cursor.execute('DELETE FROM usuario WHERE id = ?;', (id,))
     condb.commit()
-def verifica_usuario(email, senha):
-    cursor = condb.cursor()
-    cursor.execute('select *from usuario where email = ? and senha = ?;', (email,senha))
-    usuario = cursor.fetchone()
-    if usuario is None:
-        return False
-    return True
 # CRUD METODO
 def create_metodo(condb):
     cursor = condb.cursor()
@@ -278,6 +271,63 @@ def delete_assunto(condb, id):
     ''', (id,))
     condb.commit()
 
+# USUÁRIO (por email e senha)
+def verifica_usuario(email, senha):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM usuario WHERE email = ? AND senha = ?;', (email, senha))
+    return cursor.fetchone()
+
+# METODO (por nome)
+def verifica_metodo(nome):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM metodo WHERE nome = ?;', (nome,))
+    return cursor.fetchone()
+
+# POMODORO (por id_metodo)
+def verifica_pomodoro(id_metodo):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM pomodoro WHERE id_metodo = ?;', (id_metodo,))
+    return cursor.fetchone()
+
+# FEYNMAN (por id_metodo)
+def verifica_feynman(id_metodo):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM feynman WHERE id_metodo = ?;', (id_metodo,))
+    return cursor.fetchone()
+
+# PARETO (por id_metodo)
+def verifica_pareto(id_metodo):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM pareto WHERE id_metodo = ?;', (id_metodo,))
+    return cursor.fetchone()
+
+# REFERENCIAS (por link ou por nome)
+def verifica_referencias_por_link(link):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM referencias WHERE referencias_link = ?;', (link,))
+    return cursor.fetchone()
+
+def verifica_referencias_por_nome(nome):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM referencias WHERE nome = ?;', (nome,))
+    return cursor.fetchone()
+
+# PLAYLIST (por nome ou link)
+def verifica_playlist_por_nome(nome):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM playlist WHERE nome = ?;', (nome,))
+    return cursor.fetchone()
+
+def verifica_playlist_por_link(link_p):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM playlist WHERE link_p = ?;', (link_p,))
+    return cursor.fetchone()
+
+# ASSUNTO (por nome)
+def verifica_assunto(nome):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM assunto WHERE nome = ?;', (nome,))
+    return cursor.fetchone()
 
 
 

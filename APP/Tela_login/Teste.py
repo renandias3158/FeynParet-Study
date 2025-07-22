@@ -4,10 +4,16 @@ import os
 import banco
 
 app = Flask(__name__)
+app.secret_key = 'chave_secreta'
 
 condb = banco.condb
 banco.create_usuario(condb)
 
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_FILE_DIR'] = os.path.join(app.root_path, 'sessions')
+app.config['SESSION_PERMANENT'] = False
+
+Session(app)
 
 @app.route('/canais')
 def canais():
@@ -39,7 +45,14 @@ def horarios():
 
 @app.route('/mainPage')
 def mainPage():
-   return render_template('mainPage.html')
+    if 'usuario' in session:
+        return render_template('mainPage.html', usuario=session['usuario'])
+    return redirect(url_for('index'))
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
 @app.route('/materiais')
 def materiais():
@@ -57,24 +70,46 @@ def metodosestudo():
 def musicas():
    return render_template('musicas.html')
 
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/')
+def index():
+    if 'usuario' in session:
+        return redirect(url_for('mainPage'))
+    return render_template('page_login.html')
+
+@app.route('/pagelogin', methods=['GET', 'POST'])
 def page_login():
-    erro = ''
     if request.method == 'POST':
-    
-        email = request.form('email')
-        senha = request.form('senha')
-        usuario =banco.verifica_usuario(email, senha)
-        if usuario:
-            return f'login realizado com sucesso, bem vindo,{email}!'
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+        usuario = banco.verifica_usuario(email, senha)
+        
+        if usuario:  
+            session['usuario'] = usuario[1]  
+            return redirect(url_for('mainPage'))
         else:
-            erro = 'Email ou senha incorretos, tente novamente!'
-    return render_template('page_login.html' ,erro=erro)
+            flash('Email ou senha incorretos.')
+            return redirect(url_for('index'))
+    return render_template('page_login.html')
 
-@app.route('/page_newaccount')
+
+
+
+@app.route('/page_newaccount', methods=['GET', 'POST'])
+@app.route('/page_newaccount', methods=['GET', 'POST'])
 def page_newaccount():
-   return render_template('page_newaccount.html')
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        email = request.form.get('email')
+        senha = request.form.get('senha')
 
+        try:
+            usuario = banco.insert_usuario(nome, email, senha)
+            flash('Conta criada com sucesso! Você pode fazer login agora.', 'success')
+            return redirect(url_for('page_login'))  
+        except Exception as e:
+            flash('Ocorreu um erro ao criar a conta. Tente novamente.', 'error')
+            return redirect(url_for('page_newaccount'))
+    return render_template('page_newaccount.html') 
 @app.route('/paret')
 def paret():
    return render_template('paret.html')
@@ -103,13 +138,7 @@ def user():
 @app.route('/ambienteestudo')
 def ambienteestudo():
    return render_template('ambienteestudo.html')
-
-@app.route('/')
-def index():
-    return render_template('mainPage.html')
-
-            
-    
+ 
 if __name__ == '__main__':
     app.run(debug=True)
     
