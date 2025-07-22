@@ -21,6 +21,10 @@ header{
 width: 150px;
 height: 150px;
 }
+form>div.radio{
+    display: flex;
+    flex-direction: column;
+}
 header>h1{
     color: rgb(0, 207, 0);
     margin-left: 1cm;
@@ -40,18 +44,16 @@ button>img{
     border-radius:10px;
 }
 input{
-    background-color: rgb(243, 243, 243);
-    border-radius: 20px;
     border: none;
     transition-duration: 0.3s;
-    width: 30vh;
+    width: 15vh;
     height: 3.5vh;
-    margin-left: 0.2cm;
+    margin-bottom: 0.5cm;
+    margin-top: 0.5cm;
 }
 input:hover{
     transition-duration: 0.3s;
     transform: scale(106%);
-    box-shadow: 15px 12px rgba(0, 0, 0, 0.158);
 }
 form{
     width: 800px;
@@ -66,31 +68,37 @@ form{
         <h1>FORMULÁRIO</h1>
     </header>
 
-        <form action = "page_login" method= 'POST'>
+        <form method="POST" action="{{ url_for('fo') }}">
+            <div class="radio">
+                <label for="estudo">Qual o seu método de estudo mais recorrente?</label>
             <div>
-                <label for="nome">Como gostaria de ser chamado?</label>
-
-                <input type="text" placeholder="Nome" name="nome"></input>
+                <input type="radio" id="feyn" name="metodoestudo" value="feynman">
+                <label for="feynman">Feynman</label><br>
+            </div>
+            <div>
+                <input type="radio" id="paret" name="metodoestudo" value="Pareto">
+                <label for="Pareto">Pareto</label><br>
+            </div>
+            <div>
+                <input type="radio" id="pomodoro" name="metodoestudo" value="Pomodoro">
+                <label for="Pomodoro">Pomodoro</label>
+            </div>
+            <div>
+                <input type="radio" id="resum" name="metodoestudo" value="Resumos">
+                <label for="Resumos">Resumos</label>
             </div>
 
-            <div>
-                <label for="E-mail" >Qual o seu E-mail?</label>
-            
-                <input type="email" placeholder="E-mail" name="E-mail" required></input>
             </div>
-
-            <div>
-                <label for="senha">Qual a sua senha?</label>
-            
-                <input type="password" placeholder="senha"  name="senha" required></input>
-            </div>
-            <a href="{{ url_for('fo2') }}">
-            <input type="submit" onclick="prosseg()" </input>
+            <a href="{{ url_for('fo') }}">
+            <input type="submit"  onclick="user()"></input>
             </a>
         </form>
     <script>
         function prosseg(){
             window.location.href="./fo2.html"
+        }
+        function user(){
+            window.location.href="./user.html"
         }
     </script>
 </body>

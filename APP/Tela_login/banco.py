@@ -19,7 +19,7 @@ def create_usuario(condb):
         senha TEXT NOT NULL);
     ''')
     condb.commit()
-def insert_usuario(condb, nome, email, senha):
+def insert_usuario( nome, email, senha):
     cursor = condb.cursor()
     cursor.execute('INSERT INTO usuario(nome, email, senha) VALUES (?, ?, ?);', (nome, email, senha))
     condb.commit()

@@ -27,13 +27,13 @@ def estudo():
 def feyn():
    return render_template('feyn.html')
 
-@app.route('/fo')
+@app.route('/fo', methods=['GET', 'POST'])
 def fo():
-   return render_template('fo.html')
-
-@app.route('/fo2')
-def fo2():
-   return render_template('fo2.html')
+    if 'usuario' in session:
+        return render_template('fo.html', usuario=session['usuario'])
+    metodo = request.form.get('metodoestudo')
+    print(f"Método escolhido: {metodo}")
+    return redirect(url_for('mainPage'))  
 
 @app.route('/fontes')
 def fontes():
@@ -51,8 +51,8 @@ def mainPage():
 
 @app.route('/logout')
 def logout():
-    session.clear()
-    return redirect(url_for('index'))
+    session.clear()  
+    return redirect(url_for('page_login'))  
 
 @app.route('/materiais')
 def materiais():
