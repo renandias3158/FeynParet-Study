@@ -74,7 +74,7 @@ main{
 main>h2{
     font-size: 200%;
 }
-main>.formu{
+.formu{
     height: 40px;
     width: 120px;
     margin-right: 20px;
@@ -83,7 +83,7 @@ main>.formu{
     transition-duration: 0.5s;
     border-radius: 10px;
 }
-main>.formu:hover{
+.formu:hover{
     transition-duration: 0.5s;
     transform: scale(110%);
 }
@@ -150,9 +150,11 @@ footer{
 <main><h2 class="alberto">“Lembre-se que as pessoas podem tirar tudo de você, menos o seu conhecimento.”
 <br>
 <em>Albert Einstein</em></h2>
-<a href="{{ url_for('fo') }}" class="formu">
-<button onclick="fo()" >Formulario</button>
+
+<a href="{{ url_for('fo') }}" >
+<button onclick="fo()" class="formu">Formulario</button>
 </a>
+
 <h2>Oque deseja aprender hoje?</h2>
 
 </main>

@@ -29,11 +29,15 @@ def feyn():
 
 @app.route('/fo', methods=['GET', 'POST'])
 def fo():
-    if 'usuario' in session:
-        return render_template('fo.html', usuario=session['usuario'])
-    metodo = request.form.get('metodoestudo')
-    print(f"Método escolhido: {metodo}")
-    return redirect(url_for('mainPage'))  
+    if request.method == 'POST':
+        metodo_escolhido = request.form.get('metodoestudo')
+        if metodo_escolhido:
+            print(f"Você escolheu: {metodo_escolhido}")
+            return f"<h2>Método escolhido: {metodo_escolhido}</h2><a href='{url_for('mainPage')}'>Voltar</a>"
+        else:
+            return render_template("mainPage.html") 
+    else:
+        return render_template("fo.html")  
 
 @app.route('/fontes')
 def fontes():

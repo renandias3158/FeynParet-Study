@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-color: rgb(216, 216, 216);
         }
         .login-container {
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
@@ -22,18 +22,22 @@
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
             background-color: white;
         }
+        .img{
+        width: 150px;
+        height: 150px;
+        }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
     <div class="login-container bg-white rounded-xl max-w-md w-full p-8 md:p-10">
-        <!-- Logo/Cabeçalho -->
+     
         <div class="text-center mb-8">
-            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a92e3d62-ac25-46f0-86a0-cf5aeef480e3.png" alt="Logo do Sistema Educacional - Estilo moderno com ícone de livro e nome da plataforma em azul" class="mx-auto h-12">
+            <a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a>
             <h1 class="text-2xl font-bold text-gray-800 mt-4">Criar nova conta</h1>
             <p class="text-gray-600">Preencha seus dados para se registrar</p>
         </div>
 
-        <!-- Mensagens Flash -->
+    
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <div class="mb-6">
@@ -46,7 +50,7 @@
             {% endif %}
         {% endwith %}
 
-        <!-- Formulário de Registro -->
+    
         <form action="{{ url_for('page_newaccount') }}" method="POST" class="space-y-6">
             <div>
                 <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
@@ -73,48 +77,33 @@
                     autocomplete="current-password">
             </div>
 
-            <div class="flex items-center">
-                <input id="lembrar" name="lembrar" type="checkbox" 
-                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                <label for="lembrar" class="ml-2 block text-sm text-gray-700">Lembrar de mim</label>
-            </div>
-
             <button type="submit"
-                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                 Registrar
             </button>
         </form>
 
-        <!-- Link para Cadastro -->
+       
         <div class="mt-6 text-center">
-            <p class="text-sm text-gray-600">
-                Não tem uma conta? 
-                <a href="{{ url_for('page_newaccount') }}" class="font-medium text-indigo-600 hover:text-indigo-500 hover:underline">
-                    Criar conta
-                </a>
-            </p>
-        </div>
-    </div>
-
-    <!-- Link para Login -->
-    <div class="mt-4 text-center">
         <p class="text-sm text-gray-600">
             Já possui conta?
-            <a href="{{ url_for('page_login') }}" class="font-medium text-indigo-600 hover:text-indigo-500 hover:underline">
+            <a href="{{ url_for('page_login') }}" class="font-medium text-yellowgreen-600 hover:text-yellowgreen-500 hover:underline">
                 Fazer login
             </a>
         </p>
+        </div>
     </div>
-    <!-- Adicione mais campos conforme necessário -->
+
+
 </div>
 
-<!-- Validação Simples com JavaScript -->
+
     <script>
         document.querySelector('form').addEventListener('submit', function(e) {
             const email = document.getElementById('email').value;
             const emailError = document.getElementById('email-error');
             
-            // Validação mínima
+
             if (!nome.value.trim() || !email.value.includes('@')) {
                 e.preventDefault();
                 return false;
