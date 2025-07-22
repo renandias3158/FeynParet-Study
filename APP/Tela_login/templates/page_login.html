@@ -1,98 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso ao Sistema</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: rgb(216, 216, 216);
-        }
-        .login-container {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            background-color: white;
-        }
-        .img{
-        width: 150px;
-        height: 150px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Acesso ao Sistema</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #d8d8d8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      margin: 0;
+    }
+    .login-container {
+      background-color: white;
+      max-width: 400px;
+      width: 100%;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .logo {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 1rem;
+      cursor: pointer;
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #1f2937; /* cinza escuro */
+      margin-bottom: 0.25rem;
+    }
+    p.description {
+      color: #4b5563; /* cinza médio */
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .flash-message {
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      text-align: left;
+    }
+    .flash-message.error {
+      background-color: #fee2e2; /* vermelho claro */
+      border: 1px solid #fca5a5;
+      color: #b91c1c;
+    }
+    .flash-message.success {
+      background-color: #dbeafe; /* azul claro */
+      border: 1px solid #3b82f6;
+      color: #1e40af;
+    }
+    form {
+      text-align: left;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.25rem;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #6366f1; /* azul */
+      outline: none;
+    }
+    button[type="submit"] {
+      width: 100%;
+      background-color: #16a34a; /* verde */
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: #15803d;
+    }
+    .signup-text {
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+      text-align: center;
+    }
+    .signup-text a {
+      font-weight: 600;
+      color: #22c55e; /* verde */
+      text-decoration: none;
+    }
+    .signup-text a:hover {
+      text-decoration: underline;
+      color: #16a34a;
+    }
+    #email-error {
+      color: #dc2626; /* vermelho */
+      font-size: 0.75rem;
+      margin-top: -0.75rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
-    <div class="login-container bg-whiste rounded-xl max-w-md w-full p-8 md:p-10">
+<body>
+  <div class="login-container">
+    <a href="{{ url_for('mainPage') }}">
+      <img onclick="voltar()" class="logo" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg" alt="Logo" />
+    </a>
+    <h1>Acesse sua conta</h1>
+    <p class="description">Entre com seu e-mail e senha</p>
 
-        <div class="text-center mb-8">
-            <a href="{{ url_for('mainPage') }}"><img onclick="voltar()" class="img" src="https://raw.githubusercontent.com/renandias3158/FeynParet-Study/refs/heads/main/APP/Tela_login/Fparet.jpg"></a>
-            <h1 class="text-2xl font-bold text-gray-800 mt-4">Acesse sua conta</h1>
-            <p class="text-gray-600">Entre com seu e-mail e senha</p>
-        </div>
-
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <div class="mb-6">
-                    {% for category, message in messages %}
-                        <div class="{{ 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded' if category == 'error' else 'bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded' }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-
-        <form action="{{ url_for('page_login') }}" method="POST" class="space-y-6">
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-                <input type="email" id="email" name="email" required
-                    class="w-full px-4 py-3 rounded-lg input-field border border-gray-300 focus:border-indigo-500 focus:outline-none transition duration-300"
-                    placeholder="seu@email.com"
-                    autocomplete="username">
-                <p class="text-red-500 text-xs mt-1 hidden" id="email-error">Por favor insira um e-mail válido</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div>
+          {% for category, message in messages %}
+            <div class="flash-message {{ 'error' if category == 'error' else 'success' }}">
+              {{ message }}
             </div>
-
-            <div>
-                <div class="flex justify-between items-center mb-1">
-                    <label for="senha" class="block text-sm font-medium text-gray-700">Senha</label>
-                </div>
-                <input type="password" id="senha" name="senha" required
-                    class="w-full px-4 py-3 rounded-lg input-field border border-gray-300 focus:border-indigo-500 focus:outline-none transition duration-300"
-                    placeholder="••••••••"
-                    autocomplete="current-password">
-            </div>
-
-            <button type="submit"
-                class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                Entrar
-            </button>
-        </form>
-
-        <div class="mt-6 text-center">
-            <p class="text-sm text-gray-600">
-                Não tem uma conta? 
-                <a href="{{ url_for('page_newaccount') }}" class="font-medium text-yellowgreen-600 hover:text-yellowgreen-500 hover:underline">
-                    Criar conta
-                </a>
-            </p>
+          {% endfor %}
         </div>
-    </div>
+      {% endif %}
+    {% endwith %}
 
-    <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const email = document.getElementById('email').value;
-            const emailError = document.getElementById('email-error');
-            
-            if (!email.includes('@') || !email.includes('.')) {
-                emailError.classList.remove('hidden');
-                e.preventDefault();
-            } else {
-                emailError.classList.add('hidden');
-            }
-            
-        });
-    </script>
+    <form action="{{ url_for('page_login') }}" method="POST" id="login-form" novalidate>
+      <label for="email">E-mail</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="seu@email.com"
+        autocomplete="username"
+      />
+      <p id="email-error">Por favor insira um e-mail válido</p>
+
+      <label for="senha">Senha</label>
+      <input
+        type="password"
+        id="senha"
+        name="senha"
+        required
+        placeholder="••••••••"
+        autocomplete="current-password"
+      />
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p class="signup-text">
+      Não tem uma conta?
+      <a href="{{ url_for('page_newaccount') }}">Criar conta</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      const email = document.getElementById('email').value;
+      const emailError = document.getElementById('email-error');
+
+      if (!email.includes('@') || !email.includes('.')) {
+        emailError.style.display = 'block';
+        e.preventDefault();
+      } else {
+        emailError.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
 
