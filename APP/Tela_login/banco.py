@@ -48,7 +48,7 @@ def create_metodo(condb):
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS metodo (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL CHECK(nome IN ('Pomodoro', 'Feynman', 'Pareto')));
+        nome TEXT NOT NULL CHECK(nome IN ('Pomodoro', 'Feynman', 'Pareto', 'Resumos')));
     ''')
     condb.commit()
 def insert_metodo(condb, nome):

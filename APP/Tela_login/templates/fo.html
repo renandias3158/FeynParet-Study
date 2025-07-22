@@ -68,31 +68,28 @@ form{
         <h1>FORMULÁRIO</h1>
     </header>
 
-        <form method="POST" action="{{ url_for('fo') }}">
-            <div class="radio">
-                <label for="estudo">Qual o seu método de estudo mais recorrente?</label>
-            <div>
-                <input type="radio" id="feyn" name="metodoestudo" value="feynman">
-                <label for="feynman">Feynman</label><br>
-            </div>
-            <div>
-                <input type="radio" id="paret" name="metodoestudo" value="Pareto">
-                <label for="Pareto">Pareto</label><br>
-            </div>
-            <div>
-                <input type="radio" id="pomodoro" name="metodoestudo" value="Pomodoro">
-                <label for="Pomodoro">Pomodoro</label>
-            </div>
-            <div>
-                <input type="radio" id="resum" name="metodoestudo" value="Resumos">
-                <label for="Resumos">Resumos</label>
-            </div>
-
-            </div>
-            
-            <input type="submit"></input>
-            
-        </form>
+<form method="POST" action="{{ url_for('fo') }}">
+    <div class="radio">
+        <label for="estudo">Qual o seu método de estudo mais recorrente?</label>
+        <div>
+            <input type="radio" id="feyn" name="metodoestudo" value="feynman">
+            <label for="feynman">Feynman</label><br>
+        </div>
+        <div>
+            <input type="radio" id="paret" name="metodoestudo" value="pareto">
+            <label for="pareto">Pareto</label><br>
+        </div>
+        <div>
+            <input type="radio" id="pomodoro" name="metodoestudo" value="pomodoro">
+            <label for="pomodoro">Pomodoro</label>
+        </div>
+        <div>
+            <input type="radio" id="resum" name="metodoestudo" value="resumos">
+            <label for="resumos">Resumos</label>
+        </div>
+    </div>
+    <input type="submit">
+</form>
     <script>
         function prosseg(){
             window.location.href="./fo2.html"

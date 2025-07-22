@@ -31,46 +31,49 @@ def feyn():
 def fo():
     if request.method == 'POST':
         metodo_escolhido = request.form.get('metodoestudo')
-
         if metodo_escolhido:
-            try:
-                
-                resultado = banco.verifica_metodo(metodo_escolhido)
+            metodo_lower = metodo_escolhido.lower()
+            if metodo_lower == 'resumos':
+                return render_template("resumo.html")
+            metodo_banco = metodo_escolhido.capitalize()
+            resultado = banco.verifica_metodo(metodo_banco)
+            if not resultado:
+                banco.insert_metodo(condb, metodo_banco)
+                resultado = banco.verifica_metodo(metodo_banco)
+            id_metodo = resultado[0]
 
-                if resultado:
-                    id_metodo = resultado[0]  
-                else:
-                    
-                    banco.insert_metodo(condb, metodo_escolhido)
-                    resultado = banco.verifica_metodo(metodo_escolhido)
-                    id_metodo = resultado[0]
-
-                
-                if metodo_escolhido.lower() == 'pomodoro':
-                    return redirect(url_for('pagina_pomodoro', id_metodo=id_metodo))
-                elif metodo_escolhido.lower() == 'feynman':
-                    return redirect(url_for('pagina_feynman', id_metodo=id_metodo))
-                elif metodo_escolhido.lower() == 'pareto':
-                    return redirect(url_for('pagina_pareto', id_metodo=id_metodo))
-                elif metodo_escolhido.lower() == 'resumos':
-                    return redirect(url_for('pagina_resumos', id_metodo=id_metodo))
-                else:
-                    return "<h2>Método reconhecido, mas sem ação definida.</h2>"
-
-            except Exception as e:
-                print(f"Erro ao processar método: {e}")
-                return "<h2>Erro ao processar o método.</h2>"
-
+            if metodo_lower == 'pomodoro':
+                return redirect(url_for('pagina_pomodoro', id_metodo=id_metodo))
+            elif metodo_lower == 'feynman':
+                return redirect(url_for('pagina_feynman', id_metodo=id_metodo))
+            elif metodo_lower == 'pareto':
+                return redirect(url_for('pagina_paret', id_metodo=id_metodo))
+            else:
+                return "<h2>Método reconhecido, mas sem ação definida.</h2>"
         else:
             return "<h2>Nenhum método escolhido.</h2><a href='/fo'>Voltar</a>"
-
     else:
         return render_template("fo.html")
-
+    
 @app.route('/pomodoro/<int:id_metodo>')
 def pagina_pomodoro(id_metodo):
     dados = banco.verifica_pomodoro(id_metodo)
     return render_template('pomodoro.html', dados=dados)
+
+@app.route('/feynman/<int:id_metodo>')
+def pagina_feynman(id_metodo):
+    dados = banco.verifica_feynman(id_metodo)
+    return render_template('feyn.html', dados=dados)
+
+@app.route('/paret/<int:id_metodo>')
+def pagina_paret(id_metodo):
+    dados = banco.verifica_pareto(id_metodo)
+    return render_template('paret.html', dados=dados)
+
+@app.route('/resumos/<int:id_metodo>')
+def pagina_resumo(id_metodo):
+    
+    return render_template("resumo.html", id_metodo=id_metodo)
 
 @app.route('/fontes')
 def fontes():

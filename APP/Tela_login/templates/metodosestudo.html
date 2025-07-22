@@ -21,7 +21,7 @@ header>h1{
     color: rgb(0, 207, 0);
     margin-left: 1cm;
 }
-.escolhas>button{  
+div.escolhas>a> button{  
     border-radius: 20px;
     width: 150px;
     height: 150px;
@@ -31,7 +31,7 @@ header>h1{
     transition-duration: 0.5s;
 }
 
-.escolhas>button:hover{
+div.escolhas>a> button:hover{
     transform: scale(105%);
     background-color:rgb(184, 184, 184);
     transition-duration: 0.5s; 
@@ -66,13 +66,13 @@ button.voltar:hover{
     <button onclick="pomodoro()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjwpK-c7vEPJ8nOyosWJN68VOZZqrWd-xqsA&s">Pomodoro</button>
     </a>
     <a href="{{ url_for('paret') }}">
-    <button onclick="paret()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeyvxZCM7C-QwrORR79UmsWmO3-5FUYyPCpJIOT25mEP0mJUHFOkQgxluLDl7NaLSjpNA&usqp=CAU">Pareto</button>
+    <button onclick="paret()" class="button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeyvxZCM7C-QwrORR79UmsWmO3-5FUYyPCpJIOT25mEP0mJUHFOkQgxluLDl7NaLSjpNA&usqp=CAU">Pareto</button>
     </a>
     <a href="{{ url_for('feyn') }}">
-    <button onclick="feyn()"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgfK4UbMUoOoWmFb4gOSlgeGw07hZhNjPo3Q&s">Feynman</button>
+    <button onclick="feyn()"class="button"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgfK4UbMUoOoWmFb4gOSlgeGw07hZhNjPo3Q&s">Feynman</button>
     </a>
     <a href="{{ url_for('resumo') }}">
-    <button onclick="resumo()"><img src="https://www.somosicev.com/wp-content/uploads/2018/05/Captura-de-Tela-2018-05-23-%C3%A0s-16.20.50.png">Resumos</button>
+    <button onclick="resumo()"class="button"><img src="https://www.somosicev.com/wp-content/uploads/2018/05/Captura-de-Tela-2018-05-23-%C3%A0s-16.20.50.png">Resumos</button>
     </a>
     </div>
     <a href="{{ url_for('mainPage') }}" >
