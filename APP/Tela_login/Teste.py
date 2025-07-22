@@ -31,13 +31,46 @@ def feyn():
 def fo():
     if request.method == 'POST':
         metodo_escolhido = request.form.get('metodoestudo')
+
         if metodo_escolhido:
-            print(f"Você escolheu: {metodo_escolhido}")
-            return f"<h2>Método escolhido: {metodo_escolhido}</h2><a href='{url_for('mainPage')}'>Voltar</a>"
+            try:
+                
+                resultado = banco.verifica_metodo(metodo_escolhido)
+
+                if resultado:
+                    id_metodo = resultado[0]  
+                else:
+                    
+                    banco.insert_metodo(condb, metodo_escolhido)
+                    resultado = banco.verifica_metodo(metodo_escolhido)
+                    id_metodo = resultado[0]
+
+                
+                if metodo_escolhido.lower() == 'pomodoro':
+                    return redirect(url_for('pagina_pomodoro', id_metodo=id_metodo))
+                elif metodo_escolhido.lower() == 'feynman':
+                    return redirect(url_for('pagina_feynman', id_metodo=id_metodo))
+                elif metodo_escolhido.lower() == 'pareto':
+                    return redirect(url_for('pagina_pareto', id_metodo=id_metodo))
+                elif metodo_escolhido.lower() == 'resumos':
+                    return redirect(url_for('pagina_resumos', id_metodo=id_metodo))
+                else:
+                    return "<h2>Método reconhecido, mas sem ação definida.</h2>"
+
+            except Exception as e:
+                print(f"Erro ao processar método: {e}")
+                return "<h2>Erro ao processar o método.</h2>"
+
         else:
-            return render_template("mainPage.html") 
+            return "<h2>Nenhum método escolhido.</h2><a href='/fo'>Voltar</a>"
+
     else:
-        return render_template("fo.html")  
+        return render_template("fo.html")
+
+@app.route('/pomodoro/<int:id_metodo>')
+def pagina_pomodoro(id_metodo):
+    dados = banco.verifica_pomodoro(id_metodo)
+    return render_template('pomodoro.html', dados=dados)
 
 @app.route('/fontes')
 def fontes():
@@ -95,10 +128,6 @@ def page_login():
             return redirect(url_for('index'))
     return render_template('page_login.html')
 
-
-
-
-@app.route('/page_newaccount', methods=['GET', 'POST'])
 @app.route('/page_newaccount', methods=['GET', 'POST'])
 def page_newaccount():
     if request.method == 'POST':
@@ -135,9 +164,59 @@ def pomodoro():
 def resumo():
    return render_template('resumo.html')
 
-@app.route('/user')
+@app.route('/user', methods=['GET', 'POST'])
 def user():
-   return render_template('user.html')
+    if 'usuario' not in session:
+        return redirect(url_for('page_login'))
+
+    usuario_nome = session['usuario']
+    usuario = banco.get_usuario_por_nome(condb, usuario_nome)
+
+    if not usuario:
+        flash('Usuário não encontrado.', 'error')
+        return redirect(url_for('page_login'))
+
+    id_usuario, nome, email, senha = usuario
+
+    if request.method == 'POST':
+        novo_nome = request.form.get('nome')
+        novo_email = request.form.get('email')
+        nova_senha = request.form.get('senha')
+
+        try:
+            banco.update_usuario(condb, id_usuario, novo_nome, novo_email, nova_senha)
+            session['usuario'] = novo_nome  
+            flash('Dados atualizados com sucesso!', 'success')
+            return redirect(url_for('user'))
+        except Exception as e:
+            print(f"Erro ao atualizar usuário: {e}")
+            flash('Erro ao atualizar os dados.', 'error')
+
+    return render_template('user.html', usuario={'nome': nome, 'email': email, 'senha': senha})
+
+@app.route('/deletar_usuario', methods=['POST'])
+def deletar_usuario():
+    if 'usuario' not in session:
+        return redirect(url_for('page_login'))
+
+    usuario_nome = session['usuario']
+    usuario = banco.get_usuario_por_nome(condb, usuario_nome)
+
+    if not usuario:
+        flash('Usuário não encontrado.', 'error')
+        return redirect(url_for('page_login'))
+
+    id_usuario = usuario[0]
+
+    try:
+        banco.delete_usuario(condb, id_usuario)
+        session.pop('usuario', None)  # Remove usuário da sessão
+        flash('Conta deletada com sucesso.', 'success')
+        return redirect(url_for('page_login'))
+    except Exception as e:
+        print(f"Erro ao deletar usuário: {e}")
+        flash('Erro ao deletar conta.', 'error')
+        return redirect(url_for('user'))
 
 @app.route('/ambienteestudo')
 def ambienteestudo():
@@ -145,6 +224,3 @@ def ambienteestudo():
  
 if __name__ == '__main__':
     app.run(debug=True)
-    
-
-

@@ -27,14 +27,21 @@ def verify_usuario(condb):
     cursor = condb.cursor()
     cursor.execute('SELECT * FROM usuario;')
     return cursor.fetchall()
-def update_usuario(condb, id, n_nome, n_email, n_senha, email, senha):
+def update_usuario(condb, id, n_nome, n_email, n_senha):
     cursor = condb.cursor()
-    cursor.execute('UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ? OR (email = ? AND senha = ?);', (n_nome, n_email, n_senha, id, email, senha))
+    cursor.execute(
+        'UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ?;',
+        (n_nome, n_email, n_senha, id)
+    )
     condb.commit()
 def delete_usuario(condb, id):
     cursor = condb.cursor()
     cursor.execute('DELETE FROM usuario WHERE id = ?;', (id,))
     condb.commit()
+def get_usuario_por_nome(condb, nome):
+    cursor = condb.cursor()
+    cursor.execute('SELECT * FROM usuario WHERE nome = ?;', (nome,))
+    return cursor.fetchone()
 # CRUD METODO
 def create_metodo(condb):
     cursor = condb.cursor()
