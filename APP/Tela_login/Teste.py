@@ -213,7 +213,7 @@ def deletar_usuario():
 
     try:
         banco.delete_usuario(condb, id_usuario)
-        session.pop('usuario', None)  # Remove usuário da sessão
+        session.pop('usuario', None) 
         flash('Conta deletada com sucesso.', 'success')
         return redirect(url_for('page_login'))
     except Exception as e:
